@@ -12,8 +12,9 @@ router.get('/', function(req, res) {
   		console.log(err)
   	}
   	res.render('pedidos/homePedidos', {
-	  title: 'Pedidos - Genesis Laser',
-	  pedidos: result});
+	  title: 'Pedidos - Genesis Laser'
+	 ,pedidos: result
+	});
      });
    })
   })
