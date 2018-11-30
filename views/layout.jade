@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='UTF-8', content='width=device-width, inicial-scale=1.0')
+    script(src='/bootstrap/js/bootstrap.min.js', type='text/javascript')
+    script(src='/bootstrap/js/jquery.3.2.1.min.js', type='text/javascript')
+    script(src='/bootstrap/js/popper.min.js', type='text/javascript')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/demo.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/now-ui-kit.min.css')
+    
+  body
+    nav.navbar.navbar-expand-lg.bg-danger
+      .container
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#example-navbar', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-bar.bar1
+          span.navbar-toggler-bar.bar2
+          span.navbar-toggler-bar.bar3
+        #navbarTogglerDemo01.collapse.navbar-collapse
+          a.navbar-brand(href='/') Genesis Laser
+          ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+            li.nav-item
+              a.nav-link(href='/pedidos')
+                | Pedidos 
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/orcamentos') 
+                | Orçamentos
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/estoque') 
+                | Estoque
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/clientes') 
+                |   Clientes
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/Fornecedores') 
+                | Fornecedores
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/produtos') 
+                | Produtos
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/financeiro') 
+                | Financeiro
+                span.sr-only (current)             
+          
+
+        
+    block content

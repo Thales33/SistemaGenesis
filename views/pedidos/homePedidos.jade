@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+  h1= Pedidos
+  br
+  nav.navbar.navbar-expand-lg.bg-danger
+      .container
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#example-navbar', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-bar.bar1
+          span.navbar-toggler-bar.bar2
+          span.navbar-toggler-bar.bar3
+        #navbarTogglerDemo01.collapse.navbar-collapse
+          a.navbar-brand(href='/') Pedidos
+          ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+            li.nav-item
+              a.nav-link(href='/addPedido')
+                | Novo Pedido
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/editarPedido') 
+                | Editar Pedido
+                span.sr-only (current)
+          form.form-inline.ml-auto(data-background-color='')
+            .form-group.has-white
+             input.form-control(type='text', placeholder='Search')
+  br
+  .container
+   table.table
+  thead
+    tr
+      th.text-center Cod
+      th Preço
+      th Desconto
+      th Cliente
+      th.text-right Actions
+  tbody
+  each pedido, i in pedidos.rows
+    tr
+      td.text-center #{pedido.idpedido}
+      td  #{pedido.preco}
+      td  #{pedido.desconto}
+      td  #{pedido.nome}
+      td.td-actions.text-right
+        a(href='/pedidos/editar/#{pedido.idpedido}')
+         button.btn.btn-success(type='button', rel='tooltip')
+          i.now-ui-icons.ui-2_settings-90
+        a(href='/pedidos/delete/#{pedido.idpedido')
+         button.btn.btn-danger(type='button', rel='tooltip')
+          i.now-ui-icons.ui-1_simple-remove
+    
+
+
+
