@@ -20,25 +20,25 @@ router.get('/', function(req, res) {
  // })
    
   router.get('/addPedido',function(req,res){
-  	poll.connect(process.env.DATABASE_URL, function(err,client, done){
-  	 client.query('SELECT * FROM Produto', function(err,result){
-  	 	if(err){
-  	 		console.log(err);
-  	 	}
-  	 client.query('SELECT * FROM Cliente', function(err,resultado){
-  	 	done();
-  	 	if(err){
-  	 		console.log(err);
-  	 	}
+  //	poll.connect(process.env.DATABASE_URL, function(err,client, done){
+  //	 client.query('SELECT * FROM Produto', function(err,result){
+  //	 	if(err){
+  //	 		console.log(err);
+  //	 	}
+  //	 client.query('SELECT * FROM Cliente', function(err,resultado){
+  //	 	done();
+  //	 	if(err){
+  //	 		console.log(err);
+  //	 	}
   	  res.render('pedidos/addPedido',{
-  	  	title: 'Cadastrar Novo Pedido',
-  	  	produtos: result,
-  	  	clientes: resultado
+  	  	title: 'Cadastrar Novo Pedido'
+  //	  	,produtos: result,
+  //	  	clientes: resultado
   	  })	
   	 })	
-  	 })	
-  	})
-  })
+  //	 })	
+  //	})
+ // })
 
   router.get('/pedidoCliente',function(req,res){
   	poll.connect(process.env.DATABASE_URL, function(err,client, done){
