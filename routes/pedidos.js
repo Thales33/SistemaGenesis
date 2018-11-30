@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var pool = new pg.Poll();
+var pool = new pg.Pool();
 //process.env,DATABASE_URL
 
 router.get('/', function(req, res) {
