@@ -36,10 +36,10 @@ block content
     tbody
      each pedido, i in pedidos.rows 
       tr
-       td.text-center pedido.idpedido
-       td #pedido.nome
-       td #pedido.preco
-       td #pedido.desconto
+       td.text-center #{pedido.idpedido}
+       td #{pedido.nome}
+       td #{pedido.preco}
+       td #{pedido.desconto}
        td.td-actions.text-right
         a(href='/pedidos/editar/#{pedido.idpedido}')
            button.btn.btn-success(type='button', rel='tooltip')
