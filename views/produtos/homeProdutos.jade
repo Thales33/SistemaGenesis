@@ -8,44 +8,24 @@ block content
       tr
        th.text-center Cod
        th Descrição
-       th Preço
-       th Desconto
+       th Peso
+       th Preço Custo
+       th Preço Revenda
+       th Preço Cliente
+       th Materia Prima
        th.text-right Actions
     tbody
+    each produto, i in produtos.rows
       tr
-       td.text-center 1
-       td Andrew Mike
-       td Develop
-       td 2013
+       td.text-center produto.idproduto
+       td produto.descricao
+       td produto.peso
+       td produto.precoCusto
        td.td-actions.text-right
-        //a(href='/pedidos/editar/#{pedido.idpedido}')
+          a(href='/produtos/editar/#{produto.idproduto}')
            button.btn.btn-success(type='button', rel='tooltip')
             i.now-ui-icons.ui-2_settings-90
-        //a(href='/pedidos/delete/#{pedido.idpedido')
+          a(href='/produtos/delete/#{pedido.idproduto')
            button.btn.btn-danger(type='button', rel='tooltip')
             i.now-ui-icons.ui-1_simple-remov
-      tr
-      tr
-       td.text-center 2
-       td John Doe
-       td Design
-       td 2012
-       td.td-actions.text-right
-        //a(href='/pedidos/editar/#{pedido.idpedido}')
-           button.btn.btn-success(type='button', rel='tooltip')
-            i.now-ui-icons.ui-2_settings-90
-        //a(href='/pedidos/delete/#{pedido.idpedido')
-           button.btn.btn-danger(type='button', rel='tooltip')
-            i.now-ui-icons.ui-1_simple-remov
-      tr
-       td.text-center 3
-       td Alex Mike
-       td Design
-       td 2010
-       td.td-actions.text-right
-        //a(href='/pedidos/editar/#{pedido.idpedido}')
-           button.btn.btn-success(type='button', rel='tooltip')
-            i.now-ui-icons.ui-2_settings-90
-        //a(href='/pedidos/delete/#{pedido.idpedido')
-           button.btn.btn-danger(type='button', rel='tooltip')
-            i.now-ui-icons.ui-1_simple-remov
+      

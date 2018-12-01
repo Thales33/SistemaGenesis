@@ -1,16 +1,16 @@
 
 
-DROP TABLE Cliente;
-DROP TABLE Contas;
-DROP TABLE Estoque;
-DROP TABLE Estoque;
-DROP TABLE Fornecedor;
-DROP TABLE MateriaPrima;
-DROP TABLE Orcamento;
-DROP TABLE Pedido;
-DROP TABLE Produto;
-DROP TABLE ProdutoOrcamento;
-DROP TABLE ProdutoPedido;
+DROP TABLE Cliente CASCADE;
+DROP TABLE Contas CASCADE;
+DROP TABLE Estoque CASCADE;
+DROP TABLE Estoque CASCADE;
+DROP TABLE Fornecedor CASCADE;
+DROP TABLE MateriaPrima CASCADE;
+DROP TABLE Orcamento CASCADE;
+DROP TABLE Pedido CASCADE;
+DROP TABLE Produto CASCADE;
+DROP TABLE ProdutoOrcamento CASCADE;
+DROP TABLE ProdutoPedido CASCADE;
 
 CREATE TABLE Fornecedor
 (
@@ -145,7 +145,29 @@ CREATE TABLE ProdutoOrcamento
 );
 
 
-
-
-
-
+INSERT INTO "Fornecedor" (nome, endereco, telefone, site, cnpj, email) VALUES
+  ('Madereira', 'Rua Timbiras, 333', '9999-9999', 'www.madereira.com', '182.182.0001-88', 'email@teste.com.br');
+INSERT INTO "MateriaPrima" (idmateriaprima,descricao, dimensao, preco, "idFornecedor") VALUES
+  (1,'MDF 3MM CRU', '2000 X 1000', 32, 1),
+  (2,'MDF 6MM CRU', '2000X1000', 55, 1);
+INSERT INTO "produto" (idproduto,descricao, peso, "precocusto", "precorevenda", "precocliente", "idmateriaprima") VALUES
+  (1,'porta copo Harry 8 peças', 300, 10, 20, 70, 2),
+  (2,'jogo da memoria', 500, 30, 40, 60, 2);
+INSERT INTO "estoque" (idestoque,"idproduto", quantidade) VALUES
+  (1,2, 500),
+  (2,1, 100);
+INSERT INTO "cliente" (idcliente,nome, cpf, telefone, endereco, email) VALUES
+  (1,'Maria', '900.767.456-87', '8888-8888', 'rua testando,555', 'email@email.com'),
+  (2,'bruno', '427.998.767-87', '9999-9999', 'rua da mariazinha,655', 'teste@email.com'),
+  (3,'dudu', '429.555.789-78', '2049-1636', 'rua das flores,999', 'testando@email.com'),
+  (4,'Jose', '428.994.867-46', 'TIO JOSE', 'rua do teste, 698', 'email@gmail.com');
+INSERT INTO "pedido" (idpedido,"idcliente", preco, desconto) VALUES
+  (1,1, 75, 0),
+  (2,2, 500, 0),
+  (3,4, 600, 0);
+INSERT INTO "produtopedido" (idprodped,"idproduto", "idpedido", quant) VALUES
+  (1,1, 1, 17),
+  (2,2, 2, 300),
+  (3,1, 2, 100),
+  (4,1, 3, 400),
+  (5,2, 3, 500);
