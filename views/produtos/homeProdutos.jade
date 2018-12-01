@@ -15,11 +15,11 @@ block content
        th Materia Prima
        th.text-right Actions
     tbody
-    each produto, i in produtos.rows
+     each produto, i in produtos.rows
       tr
-       td.text-center #produto.idproduto
-       td #produto.descricao
-       td #produto.peso
+       td.text-center {#produto.idproduto}
+       td {#produto.descricao}
+       td {#produto.peso}
        td 
        td.td-actions.text-right
           a(href='/produtos/editar/#{produto.idproduto}')

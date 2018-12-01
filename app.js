@@ -32,7 +32,7 @@ app.use('/pedidos', pedidos);
 app.use('/produtos', produtos);
 app.use('/estoque', estoque);
 app.use('/clientes', cliente);
-app.use('/forcenedores', forcenedores);
+app.use('/fornecedores', fornecedores);
 app.use('/financeiro', financeiro);
 app.use('/orcamentos', orcamentos);
 
