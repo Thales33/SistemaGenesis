@@ -31,7 +31,7 @@ app.use('/', indexRouter);
 app.use('/pedidos', pedidos);
 app.use('/produtos', produtos);
 app.use('/estoque', estoque);
-app.use('/cliente', cliente);
+app.use('/clientes', cliente);
 app.use('/forcenedores', forcenedores);
 app.use('/financeiro', financeiro);
 app.use('/orcamentos', orcamentos);

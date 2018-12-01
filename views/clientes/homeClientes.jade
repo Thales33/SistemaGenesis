@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+  h1= Clientes
+  .container
+   table.table.mr-auto
+    thead
+      tr
+       th.text-center Codigo
+       th Nome
+       th Cpf
+       th telefone
+       th Endereço
+       th Email
+       th.text-right Actions
+    tbody
+      tr
+       td.text-center 1
+       td Andrew Mike
+       td Develop
+       td 2013
+       td.td-actions.text-right
+        //a(href='/clientes/editar/#{cliente.idcliente}')
+           button.btn.btn-success(type='button', rel='tooltip')
+            i.now-ui-icons.ui-2_settings-90
+        //a(href='/clientes/delete/#{cliente.idcliente')
+           button.btn.btn-danger(type='button', rel='tooltip')
+            i.now-ui-icons.ui-1_simple-remov
+      tr
+      tr
+       td.text-center 2
+       td John Doe
+       td Design
+       td 2012
+       td.td-actions.text-right
+        //a(href='/clientes/editar/#{cliente.idcliente}')
+           button.btn.btn-success(type='button', rel='tooltip')
+            i.now-ui-icons.ui-2_settings-90
+        //a(href='/clientess/delete/#{cliente.idcliente')
+           button.btn.btn-danger(type='button', rel='tooltip')
+            i.now-ui-icons.ui-1_simple-remov
+      tr
+       td.text-center 3
+       td Alex Mike
+       td Design
+       td 2010
+       td.td-actions.text-right
+        //a(href='/clientes/editar/#{cliente.idcliente}')
+           button.btn.btn-success(type='button', rel='tooltip')
+            i.now-ui-icons.ui-2_settings-90
+        //a(href='/clientess/delete/#{cliente.idcliente')
+           button.btn.btn-danger(type='button', rel='tooltip')
+            i.now-ui-icons.ui-1_simple-remov
