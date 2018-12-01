@@ -9,7 +9,7 @@ block content
       tr
        th.text-center Cod
        th Cliente
-       th Valor
+       th Preço
        th Desconto
        th.text-right Actions
     tbody
@@ -17,6 +17,7 @@ block content
       tr
        td.text-center #{pedido.idpedido}
        td #{pedido.nome}
+       td #{pedido.preco}
        td #{pedido.desconto}
        td.td-actions.text-right
         a(href='/pedidos/editar/#{pedido.idpedido}')

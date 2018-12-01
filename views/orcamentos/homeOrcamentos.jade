@@ -1,4 +1,4 @@
-﻿extends ../layout
+extends ../layout
 
 block content
   h1= Produtos
@@ -15,20 +15,17 @@ block content
        th Materia Prima
        th.text-right Actions
     tbody
-     each produto, i in produtos.rows
+     each orcamento, i in orcamentos.rows
       tr
-       td.text-center #{produto.idproduto}
-       td #{produto.descricao}
-       td #{produto.peso} g
-       td #{produto.precocusto}
-       td #{produto.precorevenda}
-       td #{produto.precocliente}
-       td #{produto.materia}
+       td.text-center #{orcamento.idorcamento}
+       td #{orcamento.descricao}
+       td #{orcamento.peso} g
+       td 
        td.td-actions.text-right
-          a(href='/produtos/editar/#{produto.idproduto}')
+          a(href='/orcamentos/editar/#{orcamento.idorcamento}')
            button.btn.btn-success(type='button', rel='tooltip')
             i.now-ui-icons.ui-2_settings-90
-          a(href='/produtos/delete/#{produto.idproduto')
+          a(href='/orcamentos/delete/#{orcamento.idorcamento')
            button.btn.btn-danger(type='button', rel='tooltip')
             i.now-ui-icons.ui-1_simple-remove
       
