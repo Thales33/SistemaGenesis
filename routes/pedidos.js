@@ -1,23 +1,25 @@
 var express = require('express');
 var router = express.Router();
-var pg = require('pg');
-var pool = new pg.Pool();
+const {Pool} = require('pg');
+const pool = new Pool({connectionString: process.env.DATABASE_URL,
+ssl: true
+});
 //process.env,DATABASE_URL
 
 router.get('/', function(req, res) {
-  pool.connect(process.env.DATABASE_URL, function(err, client,done){
+  pool.connect(function(err, client,done){
   client.query('SELECT ped.idpedido,ped.preco, ped.desconto, cli.nome FROM Pedidos as ped inner join Cliente as cli on (ped.cliente = cli.idcliente) order by ASC',function(err, result){
   	done();
   	if(err){
-  		console.log(err)
+  		console.log(err.stack)
  	}
   	res.render('pedidos/homePedidos', {
 	  title: 'Pedidos - Genesis Laser'
 	 ,pedidos: result
 	});
      });
-   })
-  })
+   });
+  });
    
   router.get('/addPedido',function(req,res){
   //	poll.connect(process.env.DATABASE_URL, function(err,client, done){
@@ -34,8 +36,8 @@ router.get('/', function(req, res) {
   	  	title: 'Cadastrar Novo Pedido'
   //	  	,produtos: result,
   //	  	clientes: resultado
-  	  })	
-  	 })	
+  	  });	
+  	 });
   //	 })	
   //	})
  // })
@@ -51,10 +53,10 @@ router.get('/', function(req, res) {
   	  	title: 'Consulta de Pedido por Cliente',
   	  	produtos: result,
   	  	clientes: resultado
-  	  })	
-  	 })	
-  	 })	
-  	})
+  	  });	
+  	 });
+  	 });	
+  	});
 
   
 
