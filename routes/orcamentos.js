@@ -35,7 +35,7 @@ router.get('/cadOrcamento',function(req,res){
         if(err){
           console.log(err);
         } 
-          res.render('orcamentos/addOrcamento',{
+          res.render('orcamentos/cadOrcamento',{
               title: 'Cadastrar Novo Orçamento'
               ,produtos: result,
               clientes: resultado,
