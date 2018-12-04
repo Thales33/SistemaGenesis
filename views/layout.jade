@@ -12,64 +12,22 @@ html
     link(rel='stylesheet', href='/bootstrap/css/now-ui-kit.min.css')
     
   body
+    
     ul.nav.nav-pills.nav-pills-danger
      li.nav-item
-      a.nav-link.active(href='/') Genesis Laser
+      a.nav-link.active(href='#') Active
      li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active(data-toggle='dropdown',href='#', role='button', aria-haspopup='true', aria-expanded='false') Pedidos
+      a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Dropdown
       .dropdown-menu
-        a.dropdown-item(href='/pedidos') Home Pedidos
-        a.dropdown-item(href='/addPedido') Novo Pedido
-        a.dropdown-item(href='/consultaPedido') Consulta Pedido Por cliente especifico
-     li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active(data-toggle='dropdown',href='#', role='button', aria-haspopup='true', aria-expanded='false')Orçamentos
-      .dropdown-menu
-        a.dropdown-item(href='/orcamentos') Home Orçamentos
-        a.dropdown-item(href='/addOrcamento') Novo Orçamento
-        a.dropdown-item(href='/consultaOrcamento') Consulta Orçamento Por cliente especifico
-     li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active(data-toggle='dropdown',href='#', role='button', aria-haspopup='true', aria-expanded='false') Estoque
-      .dropdown-menu
-        a.dropdown-item(href='/estoque') Home Estoque
-        a.dropdown-item(href='/attEstoque') Atualizar estoque
-     li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active(data-toggle='dropdown',href='#',role='button', aria-haspopup='true', aria-expanded='false') Clientes
-      .dropdown-menu
-        a.dropdown-item(href='/clientes') Home Clientes
-        a.dropdown-item(href='/cadCliente') Cadastrar Cliente
-        a.dropdown-item(href='/consultaPedidos') Consulta Pedidos do Cliente
-     li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active(data-toggle='dropdown',href='#', role='button', aria-haspopup='true', aria-expanded='false') Fornecedor
-      .dropdown-menu
-        a.dropdown-item(href='/fornecedores') Home Fornecedores
-        a.dropdown-item(href='/cadFornecedor') Cadastrar Fornecedor
-        a.dropdown-item(href='/consultaFornece') Consulta Fornecedor
-     li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active(data-toggle='dropdown',href='#', role='button', aria-haspopup='true', aria-expanded='false') Produtos
-      .dropdown-menu
-        a.dropdown-item(href='/produtos') Home Produtos
-        a.dropdown-item(href='/addProduto') Cadastra Produto
-        a.dropdown-item(href='/consultaEstoque') Consulta Estoque do Produto                
-     li.nav-item.dropdown
-      a.nav-link.dropdown-toggle.active(data-toggle='dropdown',href='#', role='button', aria-haspopup='true', aria-expanded='false') Financeiro
-      .dropdown-menu
-        a.dropdown-item(href='/produtos') Home Financeiro
-        a.dropdown-item(href='/Cadastra') Cadastra Conta
-        a.dropdown-item(href='/downPlani') Download Planilia Rodrigo
-    ul.nav.nav-pills.nav-pills-danger
-  li.nav-item
-    a.nav-link.active(href='#') Active
-  li.nav-item.dropdown
-    a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Dropdown
-    .dropdown-menu
-      a.dropdown-item(href='#') Action
-      a.dropdown-item(href='#') Another action
-      a.dropdown-item(href='#') Something else here
-      .dropdown-divider
-      a.dropdown-item(href='#') Separated link
-  li.nav-item
-    a.nav-link(href='#') Link
-  li.nav-item
-    a.nav-link.disabled(href='#') Disabled    
+       a.dropdown-item(href='#') Action
+       a.dropdown-item(href='#') Another action
+       a.dropdown-item(href='#') Something else here
+       .dropdown-divider
+       a.dropdown-item(href='#') Separated link
+     li.nav-item
+      a.nav-link(href='#') Link
+     li.nav-item
+      a.nav-link.disabled(href='#') Disabled    
+
      
 block content
