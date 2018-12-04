@@ -3,7 +3,16 @@ extends ../layout
 block content
   h1= Pedidos
   br
-  .container
+  script(type='text/javascript').
+    $(document).ready(function(){
+     $("#Pesquisa").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#Tabela tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+     });
+    });
+ .container
    input#Pesquisa.light-table-filter(type='search', data-table='order-table', placeholder='Filter')
    br
    br
