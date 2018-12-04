@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    h1= title
+
+    form(name="addClientes",method="post",action="/clientes/addClientes")
+     .container
+        // Text input
+        | Nome
+        input#nome.form-control.input-md(name='nome', type='text', placeholder='Nome Completo', required='')
+        br
+        // Text input
+        |Cpf
+        input#cpf.form-control.input-md(name='cpf', type='text', placeholder='Ex.: 888.888.888-88', required='')
+        br
+        // Text input
+        |Telefone
+        input#telefone.form-control.input-md(name='telefone', type='text', placeholder='EX.: (11)99999-999', required='')
+        br
+        // Text input
+        |Endereço
+        input#endereco.form-control.input-md(name='endereco', type='text', placeholder='EX.: (11)99999-999', required='')
+        br
+        // Text input
+        |Email
+        input#email.form-control.input-md(name='email', type='text', placeholder='EX.: (11)99999-999', required='')
+        br
+        // Button
+        button.btn.btn-primary(type='submit') Cadastrar
