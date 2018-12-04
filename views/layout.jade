@@ -12,43 +12,49 @@ html
     link(rel='stylesheet', href='/bootstrap/css/now-ui-kit.min.css')
     
   body
-    nav.navbar.navbar-expand-xl.bg-danger
-      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#example-navbar', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-bar.bar1
-          span.navbar-toggler-bar.bar2
-          span.navbar-toggler-bar.bar3
-        #navbarTogglerDemo01.collapse.navbar-collapse
-          a.navbar-brand(href='/') Genesis Laser
-          ul.navbar-nav.mr-auto.mt-2.mt-xl-2
-            li.nav-item
-              a.nav-link(href='/pedidos')
-                | Pedidos 
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='/orcamentos') 
-                | Orçamentos
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='/estoque') 
-                | Estoque
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='/clientes') 
-                |   Clientes
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='/Fornecedores') 
-                | Fornecedores
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='/produtos') 
-                | Produtos
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='/financeiro') 
-                | Financeiro
-                span.sr-only (current)             
-          
-
-        
-    block content
+    ul.nav.nav-pills.nav-pills-danger
+  li.nav-item
+    a.nav-link.danger(href='#') Genesis Laser
+  li.nav-item.dropdown
+    a.nav-link.dropdown-toggle.danger(data-toggle='dropdown', href='/pedidos', role='button', aria-haspopup='true', aria-expanded='false') Pedidos
+    .dropdown-menu
+      a.dropdown-item(href='/pedidos') Home Pedidos
+      a.dropdown-item(href='/addPedido') Novo Pedido
+      a.dropdown-item(href='/consultaPedido') Consulta Pedido Por cliente especifico
+  li.nav-item.dropdown
+    a.nav-link.dropdown-toggle.danger(data-toggle='dropdown', href='/orcamentos', role='button', aria-haspopup='true', aria-expanded='false') Orçamentos
+    .dropdown-menu
+      a.dropdown-item(href='/orcamentos') Home Orçamentos
+      a.dropdown-item(href='/addOrcamento') Novo Orçamento
+      a.dropdown-item(href='/consultaOrcamento') Consulta Orçamento Por cliente especifico
+  li.nav-item.dropdown
+    a.nav-link.dropdown-toggle.danger(data-toggle='dropdown', href='/estoque', role='button', aria-haspopup='true', aria-expanded='false') Estoque
+    .dropdown-menu
+      a.dropdown-item(href='/estoque') Home Estoque
+      a.dropdown-item(href='/attEstoque') Atualizar estoque
+  li.nav-item.dropdown
+    a.nav-link.dropdown-toggle.danger(data-toggle='dropdown', href='/clientes', role='button', aria-haspopup='true', aria-expanded='false') Clientes
+    .dropdown-menu
+      a.dropdown-item(href='/clientes') Home Clientes
+      a.dropdown-item(href='/cadCliente') Cadastrar Cliente
+      a.dropdown-item(href='/consultaPedidos') Consulta Pedidos do Cliente
+  li.nav-item.dropdown
+    a.nav-link.dropdown-toggle.danger(data-toggle='dropdown', href='/fornecedores', role='button', aria-haspopup='true', aria-expanded='false') Fornecedor
+    .dropdown-menu
+      a.dropdown-item(href='/fornecedores') Home Fornecedores
+      a.dropdown-item(href='/cadFornecedor') Cadastrar Fornecedor
+      a.dropdown-item(href='/consultaFornece') Consulta Fornecedor
+  li.nav-item.dropdown
+    a.nav-link.dropdown-toggle.danger(data-toggle='dropdown', href='/produtos', role='button', aria-haspopup='true', aria-expanded='false') Produtos
+    .dropdown-menu
+      a.dropdown-item(href='/produtos') Home Produtos
+      a.dropdown-item(href='/addProduto') Cadastra Produto
+      a.dropdown-item(href='/consultaEstoque') Consulta Estoque do Produto                
+  li.nav-item.dropdown
+    a.nav-link.dropdown-toggle.danger(data-toggle='dropdown', href='/financeiro', role='button', aria-haspopup='true', aria-expanded='false') Financeiro
+    .dropdown-menu
+      a.dropdown-item(href='/produtos') Home Financeiro
+      a.dropdown-item(href='/Cadastra') Cadastra Conta
+      a.dropdown-item(href='/downPlani') Download Planilia Rodrigo
+     
+block content
