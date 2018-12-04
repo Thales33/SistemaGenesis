@@ -7,15 +7,12 @@ block content
     thead
       tr
        th.text-center Cod
+       th Valor
        th Descrição
-       th Peso
-       th Preço Custo
-       th Preço Revenda
-       th Preço Cliente
-       th Materia Prima
+       th Data Vencimento
        th.text-right Actions
     tbody
-     each produto, i in produtos.rows
+     each conta, i in contas.rows
       tr
        td.text-center #{produto.idproduto}
        td #{produto.descricao}

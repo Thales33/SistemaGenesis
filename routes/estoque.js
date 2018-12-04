@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 });  
 
 router.get('/cadEstoque', function(req,res){
-      res.render('estoque/cadFornecedor', {
+      res.render('estoque/cadEstoque', {
     	title: 'Atualizar Estoque'
     });
    });
