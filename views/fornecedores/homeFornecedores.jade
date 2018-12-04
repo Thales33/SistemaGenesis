@@ -7,20 +7,23 @@ block content
     thead
       tr
        th.text-center Cod
-       th Descrição
-       th Peso
-       th Preço Custo
-       th Preço Revenda
-       th Preço Cliente
-       th Materia Prima
+       th Nome
+       th Cnpj
+       th telefone
+       th Endereço
+       th Email
+       th Site
        th.text-right Actions
     tbody
      each fornecedor, i in fornecedores.rows
       tr
        td.text-center #{fornecedor.idfornecedor}
-       td #{fornecedor.descricao}
-       td #{fornecedor.peso} g
-       td 
+       td #{fornecedor.nome}
+       td #{fornecedor.cnpj} 
+       td #{fornecedor.telefone} 
+       td #{fornecedor.endereco}
+       td #{fornecedor.email}
+       td #{fornecedor.site}
        td.td-actions.text-right
           a(href='/fornecedores/editar/#{fornecedor.idfornecedor}')
            button.btn.btn-success(type='button', rel='tooltip')
