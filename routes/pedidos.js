@@ -75,14 +75,9 @@ router.get('/', function(req, res) {
   	 	}
   	 res.render('pedidos/addPedido',{
   	  	title: 'Consulta de Pedido por Cliente',
-  	  	produtos: result,
-  	  	clientes: resultado
+  	  	clientes: result
   	  });	
   	 });
   	 });	
   	});
-
-  
-
-
 module.exports = router;
