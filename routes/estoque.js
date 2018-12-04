@@ -12,7 +12,32 @@ router.get('/', function(req, res, next) {
   	if(err){
   		console.log(err.stack);
  	}
-  res.render('estoque', { title: 'Estoque - Genesis Laser' });
+  res.render('estoque/homeEstoque', { title: 'Estoque - Genesis Laser' });
+   });
+  });
+});  
+
+router.get('/cadEstoque', function(req,res){
+      res.render('estoque/cadFornecedor', {
+    	title: 'Atualizar Estoque'
+    });
+   });
+
+router.post('/attEstoque',function(req,res){
+var produto = req.body.produto;
+var quantidade = req.body.quantidade
+
+pool.connect(function(err, client,done){
+	client.query('INSERT INTO estoque (idproduto,quantidade) VALUES ($1,$2);',[produto,quantidade],function(err, result){
+  	done();
+  	if(err){
+  		console.log(err.stack);
+  		res.send('Erro ao atualizar Estoque');
+  	}else{
+     res.redirect('/estoque/homeEstoque')
+  	}
+  });
+ });
 });
 
 module.exports = router;
