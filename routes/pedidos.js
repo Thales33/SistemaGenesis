@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
    });
   });
    
-  router.get('/addPedido',function(req,res){
+router.get('/addPedido',function(req,res){
   	poll.connect(function(err,client, done){
   	 client.query('SELECT * FROM produto', function(err,result){
   	 	if(err){
@@ -45,9 +45,10 @@ router.get('/', function(req, res) {
   	 });
   	 });	
   	});
-  });
+   });
+  });  
 
-  router.post('/add',function(req,res){
+router.post('/add',function(req,res){
     var idcliente = req.body.idcliente;
     var idstatus = req.body.idstatus;
     var desconto = req.body.desconto;
@@ -66,7 +67,7 @@ router.get('/', function(req, res) {
    });   
 
 
-  router.get('/pedidoCliente',function(req,res){
+router.get('/pedidoCliente',function(req,res){
   	poll.connect(process.env.DATABASE_URL, function(err,client, done){
   	 client.query('SELECT * FROM Pedido inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
   	 	done();
