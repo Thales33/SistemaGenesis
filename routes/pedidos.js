@@ -62,7 +62,7 @@ router.get('/', function(req, res) {
      res.redirect('/pedidos/homePedidos');
      }
      });
-    }):
+    });
    });   
 
 
