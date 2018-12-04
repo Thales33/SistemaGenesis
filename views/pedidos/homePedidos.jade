@@ -5,6 +5,8 @@ block content
   br
   .container
    input#Pesquisa.form-control(type='text', placeholder='Search..')
+   br
+   br
    table.table.mr-auto
     thead
       tr
@@ -31,10 +33,10 @@ block content
             i.now-ui-icons.ui-1_simple-remove
  script.
     $(document).ready(function(){
-    $("#Pesquisa").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#Tabela").filter(function() {
-    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-    });
+      $("#Pesquisa").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#Tabela").filter(function() {
+         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+         });
+       });
     });

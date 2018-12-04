@@ -15,17 +15,17 @@ block content
        th Materia Prima
        th.text-right Actions
     tbody
-     each produto, i in produtos.rows
+     each fornecedor, i in fornecedores.rows
       tr
-       td.text-center #{produto.idproduto}
-       td #{produto.descricao}
-       td #{produto.peso} g
+       td.text-center #{fornecedor.idfornecedor}
+       td #{fornecedor.descricao}
+       td #{fornecedor.peso} g
        td 
        td.td-actions.text-right
-          a(href='/produtos/editar/#{produto.idproduto}')
+          a(href='/fornecedores/editar/#{fornecedor.idfornecedor}')
            button.btn.btn-success(type='button', rel='tooltip')
             i.now-ui-icons.ui-2_settings-90
-          a(href='/produtos/delete/#{pedido.idproduto')
+          a(href='/fornecedores/delete/#{pedido.idfornecedor')
            button.btn.btn-danger(type='button', rel='tooltip')
             i.now-ui-icons.ui-1_simple-remove
       

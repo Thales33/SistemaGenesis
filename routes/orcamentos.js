@@ -46,6 +46,40 @@ router.get('/addOrcamento',function(req,res){
         });
      });
     }); 
+router.post('/add',function(req,res){
+      var idcliente = req.body.idcliente;
+      var idstatus = req.body.idstatus;
+      var desconto = req.body.desconto;
+      var preco= req.body.precototal;
+      pool.connect(function(err, client, done){
+      client.query('INSERT INTO orcamento (idcliente,idstatus,preco) VALUES ($1,$2,$3,)', [idcliente,idstatus,preco], function(err, result) {
+      done();
+      if (err){
+        console.log(err);
+        res.send('Erro ao adicionar Produto ao Banco de Dados');
+      }else{
+       res.redirect('/oracamentos/homeOrcamentos');
+       }
+      });
+     });
+  });   
+  
+  
+  router.get('/pedidoCliente',function(req,res){
+        poll.connect(process.env.DATABASE_URL, function(err,client, done){
+         client.query('SELECT * FROM orcamento inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
+             done();
+             if(err){
+                 console.log(err);
+             }
+         res.render('oracamentos/homeOrcamentos',{
+              title: 'Consulta de Orçamento por Cliente',
+              clientes: result
+         });    
+     });
+    });    
+  });
+  
 
 
 module.exports = router;

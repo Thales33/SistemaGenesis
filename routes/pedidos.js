@@ -69,12 +69,12 @@ ssl: true
   
   router.get('/pedidoCliente',function(req,res){
         poll.connect(process.env.DATABASE_URL, function(err,client, done){
-         client.query('SELECT * FROM Pedido inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
+         client.query('SELECT * FROM pedido inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
              done();
              if(err){
                  console.log(err);
              }
-         res.render('pedidos/addPedido',{
+         res.render('pedidos/homePedidos',{
               title: 'Consulta de Pedido por Cliente',
               clientes: result
          });    
