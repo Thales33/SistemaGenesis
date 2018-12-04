@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    h1= title
+
+    form(name="addEstoque",method="post",action="/estoque/addEstoque")
+     .container
+        // Text input
+        | Produto
+        select#produto.form-control(name='produto')
+           each produto, i in produtos.rows
+            option(value="#{produto.idproduto}") #{produto.descricao}
+        br
+        // Text input
+        |Quantidade
+        input#quantidade.form-control.input-md(name='quantidade', type='text', placeholder='Ex.: -20(para retirar do estoque) ou 20(acrescentar no estoque)', required='')
+        br
+        // Button
+        button.btn.btn-primary(type='submit') Cadastrar

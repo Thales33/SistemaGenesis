@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    h1= title
+
+    form(name="addFornecedor",method="post",action="/fornecedores/addFornecedor")
+     .container
+        // Text input
+        | Nome
+        input#nome.form-control.input-md(name='nome', type='text', placeholder='Ex.: Leo Madeiras ', required='')           
+        br
+        // Text input
+        |Cnpj
+        input#cnpj.form-control.input-md(name='cnpj', type='text', placeholder='Ex.: 37.543.079/0001-07 ', required='')
+        br
+        |Telefone
+        input#telefone.form-control.input-md(name='telefone', type='text', placeholder='Ex.: (11)99999-9999', required='')
+        br
+        |Endereço
+        input#endereco.form-control.input-md(name='endereco', type='text', placeholder='Ex.: rua do teste numero, 445 - Itaquera -São Paulo')
+        br
+        |Email
+        input#email.form-control.input-md(name='email', type='email', placeholder='Ex.:teste@teste.com.br')
+        br
+        |Site
+        input#site.form-control.input-md(name='site', type='text', placeholder='Ex.:www.exemplo.com.br')
+        br
+        // Button
+        button.btn.btn-primary(type='submit') Cadastrar

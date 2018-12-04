@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    h1= title
+
+    form(name="addConta",method="post",action="/financeiro/addConta")
+     .container
+        // Text input
+        | Tipo
+        select#tipo.form-control(name='produto')
+        //true = A receber false = a pagar
+           option(value="true") A receber
+           option(value="false") A pagar
+        br
+        // Text input
+        |Descrição
+        input#descricao.form-control.input-md(name='descricao', type='text', placeholder='Ex.: água, luz, telefone')
+        br
+        // Text input
+        |Data de Vencimento
+        input#datavencimento.form-control.input-md(name='datavencimento', type='text', placeholder='Ex.: 29/08/2018 )')
+        button.btn.btn-primary(type='submit') Cadastrar
