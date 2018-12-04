@@ -31,7 +31,7 @@ var telefone = req.body.telefone;
 var endereco = req.body.endereco;
 var email = req.body.email;
 pool.connect(function(err, client,done){
-	client.query('INSERT INTO cliente (nome,cpf,telefone,endereco,email) VALUES ($1,$2,$3,$4,$5);',[nome,cpf,telefone,endereco,email]function(err, result){
+	client.query('INSERT INTO cliente (nome,cpf,telefone,endereco,email) VALUES ($1,$2,$3,$4,$5);',[nome,cpf,telefone,endereco,email],function(err, result){
   	done();
   	if(err){
   		console.log(err.stack);
