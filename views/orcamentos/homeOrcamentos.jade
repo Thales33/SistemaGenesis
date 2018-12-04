@@ -7,20 +7,17 @@ block content
     thead
       tr
        th.text-center Cod
-       th Descrição
-       th Peso
-       th Preço Custo
-       th Preço Revenda
-       th Preço Cliente
-       th Materia Prima
+       th Cliente
+       th Preço
+       th Status do Orçamento
        th.text-right Actions
     tbody
      each orcamento, i in orcamentos.rows
       tr
        td.text-center #{orcamento.idorcamento}
-       td #{orcamento.descricao}
-       td #{orcamento.peso} g
-       td 
+       td #{orcamento.nome}
+       td #{orcamento.preco}
+       td #{orcamento.status}
        td.td-actions.text-right
           a(href='/orcamentos/editar/#{orcamento.idorcamento}')
            button.btn.btn-success(type='button', rel='tooltip')
