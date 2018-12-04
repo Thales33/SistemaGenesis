@@ -27,13 +27,13 @@ var endereco = req.body.endereco;
 var email = req.body.email;
 var site = req.body.site;
 pool.connect(function(err, client,done){
-	client.query('INSERT INTO fornecedor (nome,cnpj,telefone,endereco,email,site) VALUES ($1,$2,$3,$4,$5,$6);',[nome,cpf,telefone,endereco,email,site,function(err, result){
+	client.query('INSERT INTO fornecedor (nome,cnpj,telefone,endereco,email,site) VALUES ($1,$2,$3,$4,$5,$6);',[nome,cpf,telefone,endereco,email,site],function(err, result){
   	done();
   	if(err){
   		console.log(err.stack);
   		res.send('Erro ao adicionar Fornecedor no Sistema');
   	}else{
-     res.redirect('/fornecedor/homeFornecedores')
+     res.redirect('/fornecedores/homeFornecedores')
   	}
   });
  });
