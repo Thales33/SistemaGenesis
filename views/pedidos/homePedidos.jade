@@ -4,6 +4,7 @@ block content
   h1= Pedidos
   br
   .container
+   input#Pesquisa.form-control(type='text', placeholder='Search..')
    table.table.mr-auto
     thead
       tr
@@ -13,7 +14,7 @@ block content
        th Desconto
        th Status do Pedido
        th.text-right Actions
-    tbody
+    tbody#Tabela
      each pedido, i in pedidos.rows 
       tr
        td.text-center #{pedido.idpedido}
@@ -28,3 +29,12 @@ block content
         a(href='/pedidos/delete/#{pedido.idpedido')
            button.btn.btn-danger(type='button', rel='tooltip')  
             i.now-ui-icons.ui-1_simple-remove
+ script.
+    $(document).ready(function(){
+    $("#Pesquisa").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#Tabela").filter(function() {
+    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+    });
+    });
