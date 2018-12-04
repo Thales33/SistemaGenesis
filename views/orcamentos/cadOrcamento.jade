@@ -1,0 +1,64 @@
+extends ../layout
+
+block content
+    h1= title
+
+    form(name="addOrcamentos",method="post",action="/orcamentos/addOrcamentos")
+     .container
+      table#tblCadastro
+        thead
+          tr
+            th Empresa/Parceiro
+            th Cliente/Fornecedor
+            th Natureza
+            th Contato
+            th Telefone
+            th E-Mail
+            th Cliente Atendido
+            th Taxa Hora
+            th % GP
+            th Taxa GP
+            th Tipo de Despesa
+            th Valor Despesa Calculado
+            th Observações
+            th ND OU NF?
+        tbody
+          tr
+            td
+              input.noBorder(type='text', name='cod_empresa')
+            td
+              input.noBorder(type='text', name='cod_cliente')
+            td
+              input.noBorder(type='text', name='cod_natureza')
+            td
+              input.noBorder(type='text', name='cod_contato')
+            td
+              input.noBorder(type='text', name='cod_telefone')
+            td
+              input.noBorder(type='text', name='cod_email')
+            td
+              input.noBorder(type='text', name='cod_clienteatendido')
+            td
+              input.noBorder(type='text', name='cod_txhora')
+            td
+              input.noBorder(type='text', name='cod_porcentagemgp')
+            td
+              input.noBorder(type='text', name='cod_txgp')
+            td
+              input.noBorder(type='text', name='cod_tipodespesa')
+            td
+              input.noBorder(type='text', name='cod_vldespesa')
+            td
+              input.noBorder(type='text', name='cod_observacoes')
+            td
+              input.noBorder(type='text', name='cod_ndnf')
+    button#adicionar(type='button')  Adicionar 
+    script.
+      $("#adicionar").bind( "click", function() {
+      var $tbody = $("#tblCadastro > tbody" );
+      var $tr = $tbody.children( "tr:first" ).clone();
+      $tr.each( function() {
+      $( this ).find( "input" ).val( "" );
+      });
+      $tbody.append( $tr );
+      }); 
