@@ -22,41 +22,65 @@ router.get('/', function(req, res) {
   });
    
   router.get('/addPedido',function(req,res){
-  //	poll.connect(process.env.DATABASE_URL, function(err,client, done){
-  //	 client.query('SELECT * FROM Produto', function(err,result){
-  //	 	if(err){
-  //	 		console.log(err);
-  //	 	}
-  //	 client.query('SELECT * FROM Cliente', function(err,resultado){
-  //	 	done();
-  //	 	if(err){
-  //	 		console.log(err);
-  //	 	}
+  	poll.connect(function(err,client, done){
+  	 client.query('SELECT * FROM produto', function(err,result){
+  	 	if(err){
+  	 		console.log(err);
+  	 	}
+  	 client.query('SELECT * FROM cliente', function(err,resultado){
+  	 	done();
+  	 	if(err){
+  	 		console.log(err);
+  	 	}
+     client.query('SELECT * FROM status', function(err,results){
+      if(err){
+        console.log(err);
+      } 
   	  res.render('pedidos/addPedido',{
   	  	title: 'Cadastrar Novo Pedido'
-  //	  	,produtos: result,
-  //	  	clientes: resultado
+  	  	,produtos: result,
+  	  	clientes: resultado,
+        status: results
   	  });	
   	 });
-  //	 })	
-  //	})
- // })
+  	 });	
+  	});
+  });
 
-  //router.get('/pedidoCliente',function(req,res){
-  //	poll.connect(process.env.DATABASE_URL, function(err,client, done){
-  //	 client.query('SELECT * FROM Pedido inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
-  //	 	done();
-  //	 	if(err){
-  //	 		console.log(err);
-  //	 	}
-  //	 res.render('pedidos/addPedido',{
-  //	  	title: 'Consulta de Pedido por Cliente',
-  //	  	produtos: result,
-  //	  	clientes: resultado
-  //	  });	
-  //	 });
-  //	 });	
-  //	});
+  router.post('/add',function(req,res){
+    var idcliente = req.body.idcliente;
+    var idstatus = req.body.idstatus;
+    var desconto = req.body.desconto;
+    var preco= req.body.precototal;
+    pool.connect(function(err, client, done){
+    client.query('INSERT INTO pedido (idcliente,idstatus,desconto,preco) VALUES ($1,$2,$3,$4)', [idcliente,idstatus,desconto,preco], function(err, result) {
+    done();
+    if (err){
+      console.log(err);
+      res.send('Erro ao adicionar Produto ao Banco de Dados');
+    }else{
+     res.redirect('/pedidos/homePedidos');
+     }
+     });
+    }):
+   });   
+
+
+  router.get('/pedidoCliente',function(req,res){
+  	poll.connect(process.env.DATABASE_URL, function(err,client, done){
+  	 client.query('SELECT * FROM Pedido inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
+  	 	done();
+  	 	if(err){
+  	 		console.log(err);
+  	 	}
+  	 res.render('pedidos/addPedido',{
+  	  	title: 'Consulta de Pedido por Cliente',
+  	  	produtos: result,
+  	  	clientes: resultado
+  	  });	
+  	 });
+  	 });	
+  	});
 
   
 
