@@ -12,7 +12,8 @@ router.get('/', function(req, res, next) {
   	if(err){
   		console.log(err.stack);
  	}
-  res.render('estoque/homeEstoque', { title: 'Estoque - Genesis Laser' });
+  res.render('estoque/homeEstoque', { title: 'Estoque - Genesis Laser' ,
+estoques: result});
    });
   });
 });  
