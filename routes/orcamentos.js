@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
     });
 
 router.get('/cadOrcamento',function(req,res){
-        poll.connect(function(err,client, done){
+        pool.connect(function(err,client, done){
          client.query('SELECT * FROM produto', function(err,result){
              if(err){
                  console.log(err);
@@ -66,7 +66,7 @@ router.post('/add',function(req,res){
   
   
   router.get('/pedidoCliente',function(req,res){
-        poll.connect(process.env.DATABASE_URL, function(err,client, done){
+        pool.connect(function(err,client, done){
          client.query('SELECT * FROM orcamento inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
              done();
              if(err){
