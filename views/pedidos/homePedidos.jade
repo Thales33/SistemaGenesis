@@ -31,3 +31,12 @@ block content
         a(href='/pedidos/delete/#{pedido.idpedido')
            button.btn.btn-danger(type='button', rel='tooltip')  
             i.now-ui-icons.ui-1_simple-remove
+    script.
+     $(document).ready(function(){
+     $("#Pesquisa").on("keyup", function() {
+     var value = $(this).val().toLowerCase();
+     $("#Tabela tr").filter(function() {
+     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+     });
+     });
+     });        
