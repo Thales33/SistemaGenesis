@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
      });
     });
 
-router.get('/addOrcamento',function(req,res){
+router.get('/cadOrcamento',function(req,res){
         poll.connect(function(err,client, done){
          client.query('SELECT * FROM produto', function(err,result){
              if(err){
