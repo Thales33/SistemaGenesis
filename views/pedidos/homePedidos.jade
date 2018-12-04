@@ -4,10 +4,10 @@ block content
   h1= Pedidos
   br
   .container
-   input#Pesquisa.form-control(type='text', placeholder='Search..')
+   input.light-table-filter(type='search', data-table='order-table', placeholder='Filter')
    br
    br
-   table.table.mr-auto
+   table.table.mr-auto..order-table.table
     thead
       tr
        th.text-center Cod
@@ -31,12 +31,4 @@ block content
         a(href='/pedidos/delete/#{pedido.idpedido')
            button.btn.btn-danger(type='button', rel='tooltip')  
             i.now-ui-icons.ui-1_simple-remove
- script.
-    $(document).ready(function(){
-      $("#Pesquisa").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#Tabela").filter(function() {
-         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-         });
-       });
-    });
+
