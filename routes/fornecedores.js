@@ -7,7 +7,7 @@ ssl: true
 
 router.get('/', function(req, res, next) {
  pool.connect(function(err, client,done){
-  client.query('SELECT * FROM fornecedor order by idforncedor ASC;',function(err, result){
+  client.query('SELECT * FROM fornecedor order by idfornecedor ASC;',function(err, result){
   	done();
   	if(err){
   		console.log(err.stack);
