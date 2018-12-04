@@ -12,33 +12,30 @@ html
     link(rel='stylesheet', href='/bootstrap/css/now-ui-kit.min.css')
     
   body.burger-menu
-
-    nav.navbar.navbar-expand-lg.navbar-light.bg-danger
-    .container
-      a.navbar-brand(href='/') Genesis Laser
+   nav.navbar.navbar-expand-lg.bg-primary
+   .container
+    a.navbar-brand(href='#') Genesis Laser
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#example-navbar', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-bar.bar1
+      span.navbar-toggler-bar.bar2
+      span.navbar-toggler-bar.bar3
+    #navbarTogglerDemo02.collapse.navbar-collapse
       ul.navbar-nav.mr-auto.mt-2.mt-lg-0
-      li.nav-item
-       a.nav-link(href='/pedidos') Pedidos
-       span.sr-only (current) 
-      li.nav-item
-       a.nav-link(href='/orcamentos') Orçamentos
-       span.sr-only (current)
-      li.nav-item
-       a.nav-link(href='/estoque') Estoque
-       span.sr-only (current)
-      li.nav-item
-       a.nav-link(href='/clientes') Clientes
-       span.sr-only (current)
-      li.nav-item
-       a.nav-link(href='/fornecedores') Fornecedores
-       span.sr-only (current)
-      li.nav-item
-       a.nav-link(href='/produtos') Produtos
-       span.sr-only (current) 
-      li.nav-item
-       a.nav-link(href='/financeiro') Financeiro
-       span.sr-only (current)       
- 
+        li.nav-item
+          a.nav-link(href='/pedidos')
+            | Pedidos 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='/orcamentos') Orçamentos
+        li.nav-item
+          a.nav-link(href='/estoque') Estoque
+        li.nav-item
+          a.nav-link(href='/clientes') Clientes
+        li.nav-item
+          a.nav-link(href='/fornecedores') Fornecedores
+        li.nav-item
+          a.nav-link(href='/produtos') Produtos
+        li.nav-item
     
      
 block content
