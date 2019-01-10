@@ -6,7 +6,7 @@ ssl: true
 });
 
 router.get('/', function(req, res, next) {
-  res.render('financeiro', { title: 'Financeiro - Genesis Laser' });
+  res.render('financeiro/homeFinanceiro', { title: 'Financeiro - Genesis Laser' });
 });
 
 module.exports = router;
