@@ -19,11 +19,18 @@ estoques: result});
 });  
 
 router.get('/cadEstoque', function(req,res){
+  pool.connect(function(err, client,done){
+  client.query('SELECT prod.idproduto,prod.descricao FROM produto as prod ORDER BY prod.idproduto ASC;',function(err, result){
+    done();
+    if(err){
+      console.log(err.stack);
+  }
       res.render('estoque/cadEstoque', {
-    	title: 'Atualizar Estoque'
+    	title: 'Atualizar Estoque',
+      produtos: result});
     });
    });
-
+  });
 router.post('/attEstoque',function(req,res){
 var produto = req.body.produto;
 var quantidade = req.body.quantidade
