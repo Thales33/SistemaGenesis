@@ -22,7 +22,7 @@ ssl: true
     });
      
   router.get('/cadPedido',function(req,res){
-        poll.connect(function(err,client, done){
+        pool.connect(function(err,client, done){
          client.query('SELECT * FROM produto', function(err,result){
              if(err){
                  console.log(err);
@@ -68,7 +68,7 @@ ssl: true
   
   
   router.get('/pedidoCliente',function(req,res){
-        poll.connect(process.env.DATABASE_URL, function(err,client, done){
+        pool.connect(process.env.DATABASE_URL, function(err,client, done){
          client.query('SELECT * FROM pedido inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
              done();
              if(err){

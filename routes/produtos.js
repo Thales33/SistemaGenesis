@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
   });
 
 router.get('/cadProduto', function(req,res){
-  poll.connect(function(err,client, done){
+  pool.connect(function(err,client, done){
          client.query('SELECT * FROM materiaprima', function(err,result){
              if(err){
                  console.log(err);
