@@ -21,7 +21,7 @@ ssl: true
      });
     });
      
-  router.get('/addPedido',function(req,res){
+  router.get('/cadPedido',function(req,res){
         poll.connect(function(err,client, done){
          client.query('SELECT * FROM produto', function(err,result){
              if(err){
@@ -36,7 +36,7 @@ ssl: true
         if(err){
           console.log(err);
         } 
-          res.render('pedidos/addPedido',{
+          res.render('pedidos/cadPedido',{
               title: 'Cadastrar Novo Pedido'
               ,produtos: result,
               clientes: resultado,
@@ -58,7 +58,7 @@ ssl: true
       done();
       if (err){
         console.log(err);
-        res.send('Erro ao adicionar Produto ao Banco de Dados');
+        res.send('Erro ao adicionar Pedido ao Banco de Dados');
       }else{
        res.redirect('/pedidos/homePedidos');
        }

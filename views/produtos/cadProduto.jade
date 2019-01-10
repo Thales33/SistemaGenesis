@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+    h1= title
+
+    form(name="addProduto",method="post",action="/produtos/addProduto")
+     .container
+        // Text input
+        | Descrição
+        input#descricao.form-control.input-md(name='descricao', type='text', placeholder='Ex: Abridor Hommer', required='')
+        br
+        // Text input
+        |Peso
+        input#peso.form-control.input-md(name='peso', type='text', placeholder='Ex: 888.888.888-88', required='')
+        br
+        // Text input
+        |Preço Custo
+        input#telefone.form-control.input-md(name='telefone', type='text', placeholder='EX: (11)99999-999', required='')
+        br
+        // Text input
+        |Preço Final
+        input#endereco.form-control.input-md(name='endereco', type='text', placeholder='EX: (11)99999-999', required='')
+        br
+        // Text input
+        |Materia Prima
+        select#materiaprima.form-control(name='materiaprima')
+           each materia, i in materiaprima.rows
+            option(value="#{materia.idmateriaprima") #{materia.descricao}
+        br
+        // Button
+        button.btn.btn-primary(type='submit') Cadastrar
