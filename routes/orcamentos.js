@@ -67,7 +67,7 @@ router.post('/add',function(req,res){
   
   router.get('/pedidoCliente',function(req,res){
         pool.connect(function(err,client, done){
-         client.query('SELECT * FROM orcamento inner join Cliente on (Pedido.idcliente = Cliente.idcliente order by ASC) ', function(err,result){
+         client.query('SELECT * FROM orcamento inner join cliente on (pedido.idcliente = cliente.idcliente order by ASC) ', function(err,result){
              done();
              if(err){
                  console.log(err);
