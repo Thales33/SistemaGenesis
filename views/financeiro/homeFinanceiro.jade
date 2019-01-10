@@ -10,18 +10,12 @@ block content
        th Valor
        th Descrição
        th Data Vencimento
-       th.text-right Actions
-    tbody
+      tbody
      each conta, i in contas.rows
       tr
-       td.text-center #{produto.idproduto}
-       td #{produto.descricao}
-       td #{produto.peso} g
-       td 
-       td.td-actions.text-right
-          a(href='/produtos/editar/#{produto.idproduto}')
-           button.btn.btn-success(type='button', rel='tooltip')
-            i.now-ui-icons.ui-2_settings-90
+       td.text-center #{conta.idconta}
+       td #{conta.valor}
+       td #{conta.datavencimento} 
    br
    br
    br
