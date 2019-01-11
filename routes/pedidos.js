@@ -59,15 +59,21 @@ ssl: true
              done();
              if(err){
                  console.log(err);
-             }       
+             }
+       client.query('SELECT * FROM pedido ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
+             done();
+             if(err){
+                 console.log(err);
+             }                    
           res.render('pedidos/adcProduto',{
               title: 'Adicionar itens ao Pedido'
               ,estoques: result
+              ,pedido: resultado
           });    
          });
          });    
         });
-      
+      });
   
   
   router.get('/pedidoCliente',function(req,res){
