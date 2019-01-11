@@ -8,7 +8,7 @@ block content
         // Text input
         | Cliente
         select#cliente.form-control(name='cliente')
-           each cliente, i in clintes.rows
+           each cliente, i in clientes.rows
             option(value="#{cliente.idcliente}") #{cliente.nome}
         br
         // Text input
