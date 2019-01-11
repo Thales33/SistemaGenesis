@@ -45,7 +45,7 @@ ssl: true
       done();
       if (err){
         console.log(err);
-        res.send('Erro ao adicionar Pedido ao Banco Dados');
+        res.send('Erro ao adicionar Pedido ao Banco Dados'+ idcliente);
       }else{
        res.redirect('/pedidos/adcProd');
        }
