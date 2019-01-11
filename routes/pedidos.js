@@ -38,7 +38,7 @@ ssl: true
         });
     
   router.post('/add',function(req,res){
-      var idcliente = req.body.idcliente;
+      var idcliente = req.body.cliente;
       var idstatus = 1;
       var desconto = req.body.desconto;
       var preco= 0;
