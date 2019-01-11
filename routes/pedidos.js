@@ -41,11 +41,11 @@ ssl: true
       var idcliente = req.body.cliente;
       var idstatus = 1;
       pool.connect(function(err, client, done){
-      client.query('INSERT INTO pedido (idpedido,idcliente,idstatus) VALUES ($1,$2)', [4,idcliente,idstatus], function(err, result) {
+      client.query('INSERT INTO pedido (idpedido,idcliente,idstatus) VALUES ($1,$2,$3)', [4,idcliente,idstatus], function(err, result) {
       done();
       if (err){
         console.log(err);
-        res.send('Erro ao adicionar Pedido ao Banco Dados'+ idcliente);
+        res.send('Erro ao adicionar Pedido ao Banco Dados';
       }else{
        res.redirect('/pedidos/adcProd');
        }
