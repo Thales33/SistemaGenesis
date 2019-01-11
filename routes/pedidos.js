@@ -39,11 +39,9 @@ ssl: true
     
   router.post('/add',function(req,res){
       var idcliente = req.body.cliente;
-      var idstatus = '1';
-      var desconto = req.body.desconto;
-      var preco= '0';
+      var idstatus = 1;
       pool.connect(function(err, client, done){
-      client.query('INSERT INTO pedido (idcliente,idstatus,desconto,preco) VALUES ($1,$2,$3,$4)', [idcliente,idstatus,desconto,preco], function(err, result) {
+      client.query('INSERT INTO pedido (idcliente,idstatus) VALUES ($1,$2)', [idcliente,idstatus], function(err, result) {
       done();
       if (err){
         console.log(err);
