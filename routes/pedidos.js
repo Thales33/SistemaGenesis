@@ -60,7 +60,7 @@ ssl: true
              if(err){
                  console.log(err);
              }
-       client.query('SELECT * FROM pedido ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
+       client.query('SELECT cliente.nome,* FROM pedido inner join cliente on (pedido.idcliente = cliente.idcliente) ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
              done();
              if(err){
                  console.log(err);
