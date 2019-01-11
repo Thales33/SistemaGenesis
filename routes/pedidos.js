@@ -55,7 +55,7 @@ ssl: true
 
   router.get('/adcProd',function(req,res){
     pool.connect(function(err,client, done){
-       client.query('SELECT prod.idproduto,prod.descricao, SUM(estoque.quantidade) as quantidade FROM produto as prod, estoque WHERE prod.idproduto = estoque.idproduto GROUP BY prod.idproduto ORDER BY prod.idproduto ASC', function(err,result){
+       client.query('SELECT prod.idproduto,prod.descricao, SUM(estoque.quantidade) as quantidade FROM produto as prod, estoque WHERE prod.idproduto = estoque.idproduto GROUP BY prod.idproduto ORDER BY prod.idproduto ASC;', function(err,result){
              done();
              if(err){
                  console.log(err);
