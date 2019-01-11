@@ -8,12 +8,12 @@ block content
         // Text input
         | Cliente
         select#cliente.form-control(name='cliente')
-           each cliente, i in clientes.rows
-            option(value='#{cliente.idcliente}') #{cliente.nome}
+           each cliente, i in clintes.rows
+            option(value="#{cliente.idcliente}") #{cliente.nome}
         br
         // Text input
-      //  |Desconto
-       // input#desconto.form-control.input-md(name='desconto', type='number', placeholder='Ex.: 20 =  20%, 30 = 30%)', required='')
-       // br
-        Button
+        |Desconto
+        //input#desconto.form-control.input-md(name='desconto', type='text', placeholder='Ex.: 20 =  20%, 30 = 30%)', required='')
+        // br
+        // Button
         button.btn.btn-primary(type='submit') Cadastrar
