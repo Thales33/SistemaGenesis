@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    h2= title
+
+    form(name="add",method="post",action="/pedidos/add")
+     .container
+        // Text input
+        | Produto
+        select#produto.form-control(name='produto')
+           each estoque, i in estoques.rows
+            option(value="#{estoque.idproduto}") #{estoque.descricao}
+        br
+        |Quantidade disponivel em estoque
+        input#estoque.form-control.input-md(name='estoque', type='text', placeholder= '#{estoque.quantidade}', disabled='')
+        // Text input
+        |Quantidade
+        input#quantidade.form-control.input-md(name='quantidade', type='text', placeholder='Ex.: 10', required='')
+        br       
+        // Button
+        button.btn.btn-primary(type='submit') Adicionar novo Produto
+        a.btn.btn-primary(type='button',href='pedidos') Voltar para Home
+

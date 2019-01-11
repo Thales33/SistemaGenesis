@@ -47,13 +47,30 @@ ssl: true
       done();
       if (err){
         console.log(err);
-        res.send('Erro ao adicionar Pedido ao Banco de Dados');
+        res.send('Erro ao adicionar Pedido ao Banco Dados');
       }else{
-       res.redirect('/pedidos/homePedidos');
+       res.redirect('/pedidos/adcProd');
        }
       });
      });
   });   
+
+  router.get('/adcProd',function(req,res){
+    pool.connect(function(err,client, done){
+       client.query('SELECT prod.idproduto,prod.descricao, SUM(estoque.quantidade) as quantidade FROM produto as prod, estoque WHERE prod.idproduto = estoque.idproduto GROUP BY prod.idproduto ORDER BY prod.idproduto ASC', function(err,result){
+             done();
+             if(err){
+                 console.log(err);
+             }
+       
+          res.render('pedidos/cadPedido',{
+              title: 'Adicionar itens ao Pedido'
+              ,estoques: result
+          });    
+         });
+         });    
+        });
+      
   
   
   router.get('/pedidoCliente',function(req,res){
