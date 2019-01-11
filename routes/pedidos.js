@@ -76,7 +76,7 @@ ssl: true
       });
 
    router.post('/addProd',function(req,res){
-      var idcliente = req.body.cliente;
+      var idpedido = req.body.pedido;
       var idproduto = req.body.produto;
       var quantidade = req.body.quantidade
       pool.connect(function(err, client, done){
@@ -107,5 +107,70 @@ ssl: true
      });
     });    
   });
-  
+ router.get('/atualizarStatus/:id', function(req, res) {
+
+  var id = req.params.id;
+  pool.connect(process.env.DATABASE_URL, function(err, client, done){
+    client.query('SELECT * FROM marca', function(err, retorno) { 
+     if (err){
+      console.log(err);
+     }
+    client.query('SELECT * FROM tipo', function(err, resultados) { 
+     if (err){
+      console.log(err);
+     }
+    client.query('SELECT * FROM PRODUTOS WHERE idprodutos = $1',[id], function(err, result) {
+      done();
+      if (err){
+      console.log(err);
+      console.log("ERRO" +err);
+
+      }
+
+      res.render('produtos/detalhes/:id',{
+      produtos : result,
+      title: 'Editar Produto',
+      marcas: retorno,
+      tipos : resultados });
+    });
+   });
+  });
+ });
+});
+
+router.post('/editarProdutos', function(req,res){
+  var idproduto = req.body.idproduto;
+  var descricao = req.body.descricao;
+  var precocusto = req.body.precoCusto;
+  var precovenda = req.body.precoVenda;
+  var tipo = req.body.tipo;
+  var marca = req.body.marca;
+
+pool.connect(process.env.DATABASE_URL, function(err, client, done){
+   client.query('UPDATE PRODUTOS SET descricao = ($1), precocusto = ($2),precovenda = ($3),idtipo = ($4), idmarca = ($5) WHERE idprodutos = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
+    done();
+    if (err){
+      console.log(err);
+    }
+    res.redirect('/produtos/listprodutos');
+  });
+ });
+});
+
+router.get('/delete/:id',function(req,res){
+    
+    var id = req.params.id;    
+  pool.connect(process.env.DATABASE_URL, function(err, client, done){
+    client.query("DELETE FROM PRODUTOS WHERE id = $1",[id],function(err){
+      done();
+        if(err){
+            console.log(err);
+        }           
+        res.redirect('/produtos/listprodutos');
+        console.log('Deletado com sucesso!');
+        
+      }); 
+    });
+  }); 
+
   module.exports = router;
