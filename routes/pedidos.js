@@ -74,6 +74,23 @@ ssl: true
          });    
         });
       });
+
+   router.post('/addProd',function(req,res){
+      var idcliente = req.body.cliente;
+      var idproduto = req.body.produto;
+      var quantidade = req.body.quantidade
+      pool.connect(function(err, client, done){
+      client.query('INSERT INTO produtopedido (idpedido,idproduto,quant) VALUES ($1,$2,$3)', [idpedido,idproduto,quantidade], function(err, result) {
+      done();
+      if (err){
+        console.log(err);
+        res.send('Erro ao adicionar Pedido ao Banco Dados');
+      }else{
+       res.redirect('/pedidos/adcProd');
+       }
+      });
+     });
+  }); 
   
   
   router.get('/pedidoCliente',function(req,res){

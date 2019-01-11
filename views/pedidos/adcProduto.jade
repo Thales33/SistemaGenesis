@@ -3,13 +3,15 @@ extends ../layout
 block content
     h2= title
 
-    form(name="add",method="post",action="/pedidos/add")
+    form(name="add",method="post",action="/pedidos/addProd")
      .container
+        |Ultimo pedido
+        input#cliente.form-control.input-md(name='cliente', type='text', placeholder='#cliente.nome', disabled='')
         // Text input
         | Produto + Quantidade disponivel
         select#produto.form-control(name='produto')
            each estoque, i in estoques.rows
-            option(value='#{estoque.idproduto}') #{estoque.descricao} - #{estoque.quantidade}
+            option(value='#{estoque.idproduto}') #{estoque.descricao} - #{estoque.quantidade} unidades disponiveis 
         br
         | Quantidade
         input#quantidade.form-control.input-md(name='quantidade', type='text', placeholder='Ex.: 10', required='')
