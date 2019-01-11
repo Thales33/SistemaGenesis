@@ -6,14 +6,14 @@ block content
     form(name="add",method="post",action="/pedidos/add")
      .container
         // Text input
-        | Produto
-        select#produto.form-control(name='produto')
-           each produto, i in produtos.rows
-            option(value="#{produto.idproduto}") #{produto.descricao}
+        | Cliente
+        select#cliente.form-control(name='cliente')
+           each cliente, i in clintes.rows
+            option(value="#{cliente.idcliente}") #{cliente.nome}
         br
         // Text input
-        |Quantidade
-        input#quantidade.form-control.input-md(name='quantidade', type='text', placeholder='Ex.: -20(para retirar do estoque) ou 20(acrescentar no estoque)', required='')
+        |Desconto
+        input#desconto.form-control.input-md(name='desconto', type='text', placeholder='Ex.: 20 =  20%, 30 = 30%)', required='')
         br
         // Button
         button.btn.btn-primary(type='submit') Cadastrar

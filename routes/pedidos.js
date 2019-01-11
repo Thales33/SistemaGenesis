@@ -22,37 +22,26 @@ ssl: true
     });
      
   router.get('/cadPedido',function(req,res){
-        pool.connect(function(err,client, done){
-         client.query('SELECT * FROM produto', function(err,result){
-             if(err){
-                 console.log(err);
-             }
-         client.query('SELECT * FROM cliente', function(err,resultado){
+    pool.connect(function(err,client, done){
+       client.query('SELECT * FROM cliente', function(err,resultado){
              done();
              if(err){
                  console.log(err);
              }
-       client.query('SELECT * FROM status', function(err,results){
-        if(err){
-          console.log(err);
-        } 
+       
           res.render('pedidos/cadPedido',{
               title: 'Cadastrar Novo Pedido'
-              ,produtos: result,
-              clientes: resultado,
-          status: results
+              ,clientes: resultado
           });    
          });
          });    
         });
-     });
-    });  
-  
+    
   router.post('/add',function(req,res){
       var idcliente = req.body.idcliente;
-      var idstatus = req.body.idstatus;
+      var idstatus = 1;
       var desconto = req.body.desconto;
-      var preco= req.body.precototal;
+      var preco= 0;
       pool.connect(function(err, client, done){
       client.query('INSERT INTO pedido (idcliente,idstatus,desconto,preco) VALUES ($1,$2,$3,$4)', [idcliente,idstatus,desconto,preco], function(err, result) {
       done();
