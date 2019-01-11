@@ -34,9 +34,9 @@ block content
    a.btn.btn-info(type='button',href='pedidos/cadPedido') Cadastrar Novo Pedido     
  script.
   $(document).ready(function(){
-   $("#Pesquisa").on("keyup", function() {
+   $("Pesquisa").on("keyup", function() {
      var value = $(this).val().toLowerCase();
-      $("#Tabela tr").filter(function() {
+      $("Tabela tr").filter(function() {
        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
    });
