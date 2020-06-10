@@ -7,7 +7,7 @@ ssl: true
 
 router.get('/', function(req, res) {
   pool.connect(function(err, client,done){
-  client.query('SELECT prod.idproduto as idproduto,prod.descricao as descricao,prod.precocusto, prod.precorevenda, prod.precocliente FROM produto as prod order by idproduto ASC;',function(err, result){
+  client.query('SELECT prod.idproduto as idproduto,prod.descricao as descricao,prod.precocusto as precocusto, prod.precorevenda as precorevenda, prod.precocliente as precocliente FROM produto as prod order by idproduto ASC;',function(err, result){
   	done();
   	if(err){
   		console.log(err.stack)
