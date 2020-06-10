@@ -3,7 +3,8 @@ html
   head
     title= title
     meta(name= 'viewport', charset='UTF-8', content='width=device-width', initial-scale=1)
-    script(src='http://code.jquery.com/jquery-latest.js', type='text/javascript')
+    script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
     script(src='/bootstrap/js/popper.min.js', type='text/javascript')
     script(src='/bootstrap/js/bootstrap.min.js', type='text/javascript')    
     script(src='/bootstrap/js/plugins/nouislider.min.js', type='text/javascript')
@@ -15,7 +16,7 @@ html
     link(rel='stylesheet', href='/bootstrap/css/demo.css')
     link(rel='stylesheet', href='/bootstrap/css/now-ui-kit.min.css')  
   body
-   nav.navbar.navbar-expand-lg.bg-primary(color='black')
+   nav.navbar.navbar-expand-lg.bg-primary
     .container
      a.navbar-brand(href='/') Studio STX
      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo02', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
