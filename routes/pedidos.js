@@ -14,7 +14,7 @@ ssl: true
             console.log(err.stack);
        }
         res.render('pedidos/homePedidos', {
-        title: 'Pedidos - Genesis Laser'
+        title: 'Pedidos - Studio STX'
        ,pedidos: result
       });
        });

@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   	if(err){
   		console.log(err.stack);
  	}
-  res.render('fornecedores/homeFornecedores', { title: 'Fornecedores - Genesis Laser',
+  res.render('fornecedores/homeFornecedores', { title: 'Fornecedores - Studio STX',
 fornecedores: result});
   });
  });

@@ -1,17 +1,17 @@
 
 
-DROP TABLE Cliente CASCADE;
-DROP TABLE Contas CASCADE;
-DROP TABLE Estoque CASCADE;
-DROP TABLE Estoque CASCADE;
-DROP TABLE Fornecedor CASCADE;
-DROP TABLE MateriaPrima CASCADE;
-DROP TABLE Orcamento CASCADE;
-DROP TABLE Pedido CASCADE;
-DROP TABLE Produto CASCADE;
-DROP TABLE ProdutoOrcamento CASCADE;
-DROP TABLE ProdutoPedido CASCADE;
-DROP TABLE status cascade;
+DROP TABLE cliente CASCADE;
+DROP TABLE contas CASCADE;
+DROP TABLE estoque CASCADE;
+DROP TABLE estoque CASCADE;
+DROP TABLE fornecedor CASCADE;
+DROP TABLE materiaPrima CASCADE;
+DROP TABLE orcamento CASCADE;
+DROP TABLE pedido CASCADE;
+DROP TABLE produto CASCADE;
+DROP TABLE produtoorcamento CASCADE;
+DROP TABLE produtopedido CASCADE;
+DROP TABLE status CASCADE;
 
 CREATE TABLE Fornecedor
 (
@@ -25,18 +25,6 @@ CREATE TABLE Fornecedor
     CONSTRAINT Fornecedor_pkey PRIMARY KEY (idFornecedor)
 );
 
-CREATE TABLE MateriaPrima
-(
-    idMateriaPrima integer NOT NULL,
-    descricao character varying(50) COLLATE pg_catalog.default NOT NULL,
-    dimensao character(30) COLLATE pg_catalog.default,
-    preco real,
-    idFornecedor integer,
-    CONSTRAINT MateriaPrima_pkey PRIMARY KEY (idMateriaPrima),
-    CONSTRAINT materiaFornecedor FOREIGN KEY (idFornecedor)
-        REFERENCES Fornecedor (idFornecedor) MATCH SIMPLE
-        ON UPDATE NO ACTION
-);
 
 CREATE TABLE Contas
 (
@@ -45,7 +33,6 @@ CREATE TABLE Contas
     valor real NOT NULL,
     descricao character varying(30) COLLATE pg_catalog.default,
     dataVencimento character varying(30) COLLATE pg_catalog.default,
-    dataEntrada date,
     CONSTRAINT Contas_pkey PRIMARY KEY (idConta)
 );
 
@@ -64,17 +51,11 @@ CREATE TABLE Produto
 (
     idProduto integer NOT NULL,
     descricao character varying(40) COLLATE pg_catalog.default NOT NULL DEFAULT NULL::character varying,
-    peso real,
     precoCusto real,
     precoRevenda real,
     precoCliente real,
-    idMateriaPrima integer,
-    CONSTRAINT Produto_pkey PRIMARY KEY (idProduto),
-    CONSTRAINT produdoMateria FOREIGN KEY (idMateriaPrima)
-        REFERENCES MateriaPrima (idMateriaPrima) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-);
+    CONSTRAINT Produto_pkey PRIMARY KEY (idProduto)
+    );
 
 CREATE TABLE Estoque
 (
@@ -101,13 +82,12 @@ CREATE TABLE Pedido
     idCliente integer,
     preco real,
     desconto real,
-    idstatus,
+    idstatus integer, 
     CONSTRAINT Pedido_pkey PRIMARY KEY (idPedido),
     CONSTRAINT PedidoCliente FOREIGN KEY (idCliente)
         REFERENCES Cliente (idCliente) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-);
+        ON DELETE NO ACTION);
 ALTER TABLE "pedido"
   ADD CONSTRAINT pedstatus
   FOREIGN KEY (idstatus)
@@ -145,7 +125,7 @@ CREATE TABLE Orcamento
         ON DELETE NO ACTION
 );
 
-ALTER TABLE public."Orcamento"
+ALTER TABLE Orcamento
   ADD CONSTRAINT orcastatus
   FOREIGN KEY (idstatus)
     REFERENCES public.status(idstatus);
@@ -168,35 +148,31 @@ CREATE TABLE ProdutoOrcamento
 );
 
 INSERT INTO status (idstatus, descricao) VALUES
-  (1, 'NOVO'),
-  (2, 'Aprovado'),
-  (3, 'Finalizado'),
-  (4, 'Em fabricação');
+  (1, 'Em Fabricação'),
+  (2, 'Cancelado'),
+  (3, 'Finalizado');
 
-INSERT INTO "Fornecedor" (nome, endereco, telefone, site, cnpj, email) VALUES
-  ('Madereira', 'Rua Timbiras, 333', '9999-9999', 'www.madereira.com', '182.182.0001-88', 'email@teste.com.br');
-INSERT INTO "MateriaPrima" (idmateriaprima,descricao, dimensao, preco, "idFornecedor") VALUES
-  (1,'MDF 3MM CRU', '2000 X 1000', 32, 1),
-  (2,'MDF 6MM CRU', '2000X1000', 55, 1);
-INSERT INTO "produto" (idproduto,descricao, peso, "precocusto", "precorevenda", "precocliente", "idmateriaprima") VALUES
-  (1,'porta copo Harry 8 peças', 300, 10, 20, 70, 2),
-  (2,'jogo da memoria', 500, 30, 40, 60, 2);
+INSERT INTO fornecedor (idfornecedor,nome, endereco, telefone, site, cnpj, email) VALUES
+  (1,'Madereira', 'Rua Timbiras, 333', '9999-9999', 'www.madereira.com', '182.182.0001-88', 'email@teste.com.br');
+INSERT INTO produto (idproduto,descricao, peso, "precocusto", "precorevenda", "precocliente") VALUES
+  (1,'porta copo Harry 8 peças', 300, 10, 20, 70),
+  (2,'jogo da memoria', 500, 30, 40, 60);
 INSERT INTO "estoque" (idestoque,"idproduto", quantidade) VALUES
   (1,2, 500),
   (2,1, 100);
-INSERT INTO "cliente" (idcliente,nome, cpf, telefone, endereco, email) VALUES
+INSERT INTO cliente (idcliente,nome, cpf, telefone, endereco, email) VALUES
   (1,'Maria', '900.767.456-87', '8888-8888', 'rua testando,555', 'email@email.com'),
   (2,'bruno', '427.998.767-87', '9999-9999', 'rua da mariazinha,655', 'teste@email.com'),
   (3,'dudu', '429.555.789-78', '2049-1636', 'rua das flores,999', 'testando@email.com'),
   (4,'Jose', '428.994.867-46', 'TIO JOSE', 'rua do teste, 698', 'email@gmail.com');
-INSERT INTO "orcamento" ("idOrcamento", "idCliente", preco, idstatus) VALUES
+INSERT INTO orcamento ("idorcamento", "idcliente", preco, idstatus) VALUES
   (3, 4, 100, 3),
-  (2, 3, 600, 4),
+  (2, 3, 600, 2),
   (1, 2, 300, 1);
 
 INSERT INTO "pedido" (idpedido,"idcliente", preco, desconto,idstatus) VALUES
   (1,1, 75, 0,1),
-  (2,2, 500, 0,4),
+  (2,2, 500, 0,2),
   (3,4, 600, 0,3);
 INSERT INTO "produtopedido" (idprodped,"idproduto", "idpedido", quant) VALUES
   (1,1, 1, 17),

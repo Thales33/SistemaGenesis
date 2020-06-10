@@ -7,7 +7,7 @@ block content
      .container
         // Text input
         | Tipo
-        select#tipo.form-control(name='produto')
+        select#tipo.form-control(name='tipo')
         //true = A receber false = a pagar
            option(value="true") A receber
            option(value="false") A pagar
@@ -15,6 +15,10 @@ block content
         // Text input
         |Descrição
         input#descricao.form-control.input-md(name='descricao', type='text', placeholder='Ex.: água, luz, telefone')
+        br
+        // valor input
+        |Valor
+        input#valor.form-control.input-md(name='valor', type='real', placeholder='Ex.: 99,99')
         br
         // Text input
         |Data de Vencimento

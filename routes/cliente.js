@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
   		console.log(err.stack);
  	}
 
-    res.render('clientes/homeClientes', { title: 'Clientes - Genesis Laser',clientes: result });
+    res.render('clientes/homeClientes', { title: 'Clientes - Studio STX',clientes: result });
    });
   });
 }); 
@@ -36,7 +36,7 @@ pool.connect(function(err, client,done){
   	if(err){
   		console.log(err.stack);
   		res.send('Erro ao adicionar Cliente no Sistema');
-  	}else{
+  	} else{
      res.redirect('/clientes/homeClientes')
   	}
   });

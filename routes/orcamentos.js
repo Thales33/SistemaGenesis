@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
             console.log(err.stack);
        }
         res.render('orcamentos/homeOrcamentos', {
-        title: 'Orçamentos - Genesis Laser'
+        title: 'Orçamentos - Studio STX'
        ,orcamentos: result
       });
        });
