@@ -1,4 +1,4 @@
-function(document) {
+function(document) tabela {
 	'use strict';
 
 	var LightTableFilter = (function(Arr) {
