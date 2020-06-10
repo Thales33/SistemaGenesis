@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 router.get('/cadConta', function(req,res){
       res.render('financeiro/cadConta', {
     	title: 'Cadastrar Nova Conta'
-    });s
+    });
    });
 
 router.post('/addConta',function(req,res){

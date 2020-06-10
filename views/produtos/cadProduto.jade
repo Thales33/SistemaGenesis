@@ -11,17 +11,15 @@ block content
         br
         // Text input
         |Preço Custo
-        input#telefone.form-control.input-md(name='telefone', type='text', placeholder='EX: (11)99999-999', required='')
+        input#precocusto.form-control.input-md(name='precocusto', type='text', placeholder='25,88', required='')
         br
         // Text input
         |Preço Final
-        input#endereco.form-control.input-md(name='endereco', type='text', placeholder='EX: (11)99999-999', required='')
+        input#precocliente.form-control.input-md(name='precocliente', type='text', placeholder='99,85', required='')
         br
         // Text input
-        |Materia Prima
-        select#materiaprima.form-control(name='materiaprima')
-           each materia, i in materiaprima.rows
-            option(value="#{materia.idmateriaprima") #{materia.descricao}
+        |Preço Revenda
+        input#precorevenda.form-control.input-md(name='precorevenda', type='text', placeholder='99,85', required='')
         br
         // Button
         button.btn.btn-primary(type='submit') Cadastrar

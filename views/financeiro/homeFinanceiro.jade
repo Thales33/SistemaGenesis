@@ -16,7 +16,7 @@ block content
        td.text-center #{conta.idconta}
        td #{conta.valor}
        td #{conta.datavencimento}
-       if #{conta.tipo} == false
+       if conta.tipo == false
         td A PAGAR
        else 
         td A receber

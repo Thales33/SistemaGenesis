@@ -11,7 +11,6 @@ block content
        th Preço Custo
        th Preço Revenda
        th Preço Cliente
-       th Materia Prima
        th.text-right Actions
     tbody
      each produto, i in produtos.rows
@@ -21,7 +20,6 @@ block content
        td #{produto.precocusto}
        td #{produto.precorevenda}
        td #{produto.precocliente}
-       td #{produto.materia}
        td.td-actions.text-right
           a(href='/produtos/editar/#{produto.idproduto}')
            button.btn.btn-success(type='button', rel='tooltip')

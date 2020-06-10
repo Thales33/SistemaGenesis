@@ -7,7 +7,7 @@ ssl: true
 
 router.get('/', function(req, res) {
   pool.connect(function(err, client,done){
-  client.query('SELECT prod.idproduto as idproduto,prod.descricao as descricao,prod.precocusto, prod.precorevenda, prod.precocliente, mat.descricao as materia FROM produto as prod inner join materiaprima as mat on (prod.idmateriaprima = mat.idmateriaprima) order by idproduto ASC;',function(err, result){
+  client.query('SELECT prod.idproduto as idproduto,prod.descricao as descricao,prod.precocusto, prod.precorevenda, prod.precocliente FROM produto as prod order by idproduto ASC;',function(err, result){
   	done();
   	if(err){
   		console.log(err.stack)
@@ -21,26 +21,18 @@ router.get('/', function(req, res) {
   });
 
 router.get('/cadProduto', function(req,res){
-  pool.connect(function(err,client, done){
-         client.query('SELECT * FROM materiaprima', function(err,result){
-             if(err){
-                 console.log(err);
-             }
-      res.render('produtos/cadProduto', {
-      title: 'Cadastrar Novo Produto',
-      materiaprima: result});
+        res.render('produtos/cadProduto', {
+      title: 'Cadastrar Novo Produto'});
     });
-   });
-});
+   
 
 router.post('/addProduto',function(req,res){
-var nome = req.body.nome;
-var cpf = req.body.cpf;
-var telefone = req.body.telefone;
-var endereco = req.body.endereco;
-var email = req.body.email;
+var descricao = req.body.descricao;
+var precocusto = req.body.precocusto;
+var precorevenda = req.body.precorevenda;
+var precocliente = req.body.precocliente;
 pool.connect(function(err, client,done){
-  client.query('INSERT INTO produto (nome,cpf,telefone,endereco,email) VALUES ($1,$2,$3,$4,$5);',[nome,cpf,telefone,endereco,email],function(err, result){
+  client.query('INSERT INTO produto (descricao,precocusto,precorevenda,precocliente) VALUES ($1,$2,$3,$4);',[descricao,precocusto,precorevenda,precocliente],function(err, result){
     done();
     if(err){
       console.log(err.stack);

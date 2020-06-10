@@ -5,8 +5,8 @@ block content
 
     form(name="add",method="post",action="/pedidos/addProd")
      .container
-        |Ultimo pedido
-        input#pedido.form-control.input-md(name='pedido', type='text', placeholder="#{pedido.idpedido} + #{pedido.nome}",value='#{pedido.idpedido', disabled='')
+        |Pedido
+        input#pedido.form-control.input-md(name='pedido', type='text', placeholder="#{pedido.idpedido} + #{pedido.nome}",value='#{pedido.idpedido}', disabled='') #{pedido.idpedido}
         // Text input
         | Produto + Quantidade disponivel
         select#produto.form-control(name='produto')
