@@ -1,8 +1,13 @@
 extends ../layout
 
 block content
-  h1= Clientes
+  h3= Clientes
   .container
+   .form-group.input-group
+   span.input-group-addon
+    i.glyphicon.glyphicon-search
+   input#txt_consulta.form-control(type='text',name='Consultar', placeholder='Pesquisar..')
+   br
    table.table.mr-auto
     thead
       tr
@@ -30,4 +35,5 @@ block content
    br
    br
    a.btn.btn-info(type='button',href='clientes/cadCliente') Cadastrar Novo Cliente    
-      
+ script.
+    $('input#txt_consulta').quicksearch('table#tabela tbody tr');     

@@ -24,7 +24,7 @@ router.get('/cadCliente', function(req,res){
     });
    });
 
-router.post('/addCliente',function(req,res){
+router.post('/addClientes',function(req,res){
 var nome = req.body.nome;
 var cpf = req.body.cpf;
 var telefone = req.body.telefone;
