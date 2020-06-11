@@ -42,7 +42,7 @@ pool.connect(function(err, client,done){
   		console.log(err.stack);
   		res.send('Erro ao atualizar Estoque');
   	}else{
-     res.redirect('/estoque/homeEstoque')
+     res.redirect('/estoque')
   	}
   });
  });
