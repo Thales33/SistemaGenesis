@@ -47,7 +47,7 @@ pool.connect(function(err, client,done){
 router.get('/editar/:id', function(req, res) {
   var id = req.params.id;
   pool.connect(function(err, client,done){
-  client.query('SELECT * FROM produto WHERE idproduto = ;'+id ,function(err, result){
+  client.query('SELECT * FROM produto WHERE idproduto = '+id+';',function(err, result){
     done();
     if(err){
       console.log(err.stack)
