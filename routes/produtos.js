@@ -53,7 +53,7 @@ router.get('/editar/:id', function(req, res) {
       console.log(err.stack)
     }
     res.render('produtos/editarProduto', {
-    title: 'Produtos - Studio STX',produto:result[0]});
+    title: 'Produtos - Studio STX',produto : result[0] });
      });
    });
   });
