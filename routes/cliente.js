@@ -43,6 +43,40 @@ pool.connect(function(err, client,done){
  });
 });
 
+router.get('/editar/:id', function(req, res) {
+  var id = req.params.id;
+  pool.connect(function(err, client,done){
+  client.query('SELECT * FROM cliente WHERE idcliente = '+id+';',function(err, result){
+    done();
+    if(err){
+      console.log(err.stack)
+      res.send('Erro ao buscar Cliente no Sistema');
+    }
+      res.render('produtos/editarCliente', {title: 'Produtos - Studio STX',cliente: result.rows[0]});
+       });
+   });
+  });
+
+router.post('/editarCliente', function(req, res) {
+  var id = req.body.idcliente;
+  var nome = req.body.nome;
+  var cpf = req.body.cpf;
+  var telefone = req.body.telefone;
+  var endereco = req.body.endereco;
+  var email = req.body.email;
+   pool.connect(function(err, client,done){
+    client.query('UPDATE cliente SET (nome,cpf,telefone,endereco,email) = ($1,$2,$3,$4,$5) WHERE idcliente = $6;',[nome,cpf,telefone,endereco,email,id],function(err, result){
+     done();
+     if(err){
+      console.log(err.stack);
+      res.send('Erro ao Editar Produto no Sistema');
+    }
+      res.redirect('/clientes');
+       });
+   });
+  });
+
+
 
 
 
