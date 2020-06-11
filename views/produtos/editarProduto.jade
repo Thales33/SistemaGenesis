@@ -2,6 +2,7 @@ extends ../layout
 
 block content
     h1= title
+     each produto, i in produtos.rows
      form(name="editProduto",method="post",action="/produtos/editarProduto")
      .container
         // Text input
