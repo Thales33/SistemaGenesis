@@ -47,13 +47,13 @@ pool.connect(function(err, client,done){
 router.get('/editar/:id', function(req, res) {
   var id = req.params.id;
   pool.connect(function(err, client,done){
-  client.query('SELECT * FROM produto WHERE idproduto = $1;',[id],function(err, result){
+  client.query('SELECT * FROM produto WHERE idproduto = ;'+id ,function(err, result){
     done();
     if(err){
       console.log(err.stack)
       res.send('Erro ao buscar Produto no Sistema');
     }
-      res.render('produtos/editarProduto', {title: 'Produtos - Studio STX',descricao: result[0].descricao,precocusto: result[0].precocusto,precorevenda: result[0].precorevenda,precocliente: result[0].precocliente});
+      res.render('produtos/editarProduto', {title: 'Produtos - Studio STX',produto: result[0]});
        });
    });
   });
