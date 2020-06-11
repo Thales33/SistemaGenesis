@@ -6,7 +6,6 @@ block content
     form(name="editProduto",method="post",action="/produtos/editarProduto")
      .container
         // Text input
-        | ID
         input#ProdID.form-control.input-md(name='idproduto', type='hidden', readonly='readonly', value='#{produto.idproduto}')
         br
         // Text input
