@@ -37,7 +37,7 @@ pool.connect(function(err, client,done){
   		console.log(err.stack);
   		res.send('Erro ao adicionar Cliente no Sistema');
   	} else{
-     res.redirect('/clientes/homeClientes')
+     res.redirect('/clientes')
   	}
   });
  });
