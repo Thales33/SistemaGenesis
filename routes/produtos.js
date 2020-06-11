@@ -47,14 +47,14 @@ pool.connect(function(err, client,done){
 router.get('/editar/:id', function(req, res) {
   var id = req.params.id
   pool.connect(function(err, client,done){
-  client.query('SELECT * FROM produto  WHERE idproduto = $1;',[id],function(err, result){
+  client.query('SELECT * FROM produto WHERE idproduto = $1;',[id],function(err, result){
     done();
     if(err){
       console.log(err.stack)
   }
     res.render('produtos/editarProduto', {
     title: 'Produtos - Studio STX'
-   ,produtos: result
+   ,produto: result[0]
   });
      });
    });
