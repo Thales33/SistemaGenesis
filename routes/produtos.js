@@ -53,7 +53,7 @@ router.get('/editar/:id', function(req, res) {
       console.log(err.stack)
       res.send('Erro ao buscar Produto no Sistema');
     }
-      res.render('produtos/editarProduto', {title: 'Produtos - Studio STX',produto: result[0]});
+      res.render('produtos/editarProduto', {title: result[0].descricao ,produto: result});
        });
    });
   });
