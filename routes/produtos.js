@@ -38,7 +38,7 @@ router.post('/addProduto',function(req,res){
         console.log(err.stack);
         res.send('Erro ao adicionar Produto no Sistema');
       }else{
-       res.redirect({title: 'Produtos - Studio STX'},'/produtos')}
+       res.redirect('/produtos',{title: 'Produtos - Studio STX'})}
     });
    });
 });  
@@ -70,7 +70,7 @@ router.post('/editarProduto', function(req, res) {
       console.log(err.stack);
       res.send('Erro ao Editar Produto no Sistema');
     }
-      res.redirect({title: 'Produtos - Studio STX'} ,'/produtos');
+      res.redirect('/produtos',{title: 'Produtos - Studio STX'});
        });
    });
   });
