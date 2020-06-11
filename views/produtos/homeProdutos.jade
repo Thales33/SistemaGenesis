@@ -1,9 +1,15 @@
 ﻿extends ../layout
 
 block content
-  h1= title
+  h3= title
+  br
   .container
-   table.table.mr-auto
+  .form-group.input-group
+  span.input-group-addon
+    i.glyphicon.glyphicon-search
+  input#txt_consulta.form-control(type='text',name='Consultar', placeholder='Pesquisar..')
+   br
+   table#tabela.table.mr-auto
     thead
       tr
        th.text-center Cod
@@ -27,6 +33,8 @@ block content
    br
    br
    br
-   a.btn.btn-info(type='button',href='produtos/cadProduto') Cadastrar Novo Produto     
+   a.btn.btn-info(type='button',href='produtos/cadProduto') Cadastrar Novo Produto
+  script.
+    $('input#txt_consulta').quicksearch('table#tabela tbody tr');      
 
       
