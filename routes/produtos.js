@@ -38,8 +38,7 @@ pool.connect(function(err, client,done){
       console.log(err.stack);
       res.send('Erro ao adicionar Produto no Sistema');
     }else{
-     res.redirect('/produtos')
-    }
+     res.redirect('/produtos', {title: 'Produtos - Studio STX'})}
   });
  });
 });  
@@ -54,6 +53,26 @@ router.get('/editar/:id', function(req, res) {
       res.send('Erro ao buscar Produto no Sistema');
     }
       res.render('produtos/editarProduto', {title: 'Produtos - Studio STX',produto: result.rows[0]});
+       });
+   });
+  });
+
+router.post('/editarProduto', function(req, res) {
+  var id = req.body.idproduto;
+  var set= { descricao : req.body.descricao,
+  precocusto : req.body.precocusto,
+  precorevenda: req.body.precorevend,
+  precocliente: req.body.precocliente}
+ 
+
+  pool.connect(function(err, client,done){
+  client.query('UPDATE produto set $1 WHERE idproduto = $2;',[set,id],function(err, result){
+    done();
+    if(err){
+      console.log(err.stack)
+      res.send('Erro ao buscar Produto no Sistema');
+    }
+      res.redirect('/produtos', {title: 'Produtos - Studio STX'});
        });
    });
   });

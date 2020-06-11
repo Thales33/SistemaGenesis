@@ -1,10 +1,14 @@
 extends ../layout
 
 block content
-    h1= title
+    h3= title
     
     form(name="editProduto",method="post",action="/produtos/editarProduto")
      .container
+        // Text input
+        | ID
+        input#ProdID.form-control.input-md(name='idproduto', type='hidden', readonly='readonly', value='#{produto.idproduto}')
+        br
         // Text input
         | Descrição
         input#ProdDescricao.form-control.input-md(name='descricao', type='text', placeholder='Ex: Abridor Hommer', required='', value='#{produto.descricao}')
