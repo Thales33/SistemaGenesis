@@ -27,20 +27,20 @@ router.get('/cadProduto', function(req,res){
    
 
 router.post('/addProduto',function(req,res){
-var descricao = req.body.descricao;
-var precocusto = req.body.precocusto;
-var precorevenda = req.body.precorevenda;
-var precocliente = req.body.precocliente;
-pool.connect(function(err, client,done){
-  client.query('INSERT INTO produto (descricao,precocusto,precorevenda,precocliente) VALUES ($1,$2,$3,$4);',[descricao,precocusto,precorevenda,precocliente],function(err, result){
-    done();
-    if(err){
-      console.log(err.stack);
-      res.send('Erro ao adicionar Produto no Sistema');
-    }else{
-     res.redirect('/produtos', {title: 'Produtos - Studio STX'})}
-  });
- });
+  var descricao = req.body.descricao;
+  var precocusto = req.body.precocusto;
+  var precorevenda = req.body.precorevenda;
+  var precocliente = req.body.precocliente;
+  pool.connect(function(err, client,done){
+    client.query('INSERT INTO produto (descricao,precocusto,precorevenda,precocliente) VALUES ($1,$2,$3,$4);',[descricao,precocusto,precorevenda,precocliente],function(err, result){
+      done();
+      if(err){
+        console.log(err.stack);
+        res.send('Erro ao adicionar Produto no Sistema');
+      }else{
+       res.redirect('/produtos', {title: 'Produtos - Studio STX'})}
+    });
+   });
 });  
 
 router.get('/editar/:id', function(req, res) {
@@ -64,10 +64,10 @@ router.post('/editarProduto', function(req, res) {
   precorevenda: req.body.precorevend,
   precocliente: req.body.precocliente};
    pool.connect(function(err, client,done){
-    client.query('UPDATE produto SET '+set+' WHERE idproduto = $;',id,function(err, result){
+    client.query('UPDATE produto SET '+set+' WHERE idproduto = $;',[id],function(err, result){
      done();
      if(err){
-      console.log(err.stack)
+      console.log(err.stack);
       res.send('Erro ao Editar Produto no Sistema');
     }
       res.redirect('/produtos', {title: 'Produtos - Studio STX'});
