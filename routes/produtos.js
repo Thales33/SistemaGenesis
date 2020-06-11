@@ -54,7 +54,7 @@ router.get('/editar/:id', function(req, res) {
   }
     res.render('produtos/editarProduto', {
     title: 'Produtos - Studio STX'
-   ,produtos: result
+   ,produto: result
   });
      });
    });
