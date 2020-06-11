@@ -52,7 +52,7 @@ router.get('/editar/:id', function(req, res) {
       console.log(err.stack)
       res.send('Erro ao buscar Cliente no Sistema');
     }
-      res.render('produtos/editarCliente', {title: 'Produtos - Studio STX',cliente: result.rows[0]});
+      res.render('clientes/editarCliente', {title: 'Clientes - Studio STX',cliente: result.rows[0]});
        });
    });
   });
