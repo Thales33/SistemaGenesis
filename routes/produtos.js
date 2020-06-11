@@ -61,7 +61,7 @@ router.post('/editarProduto', function(req, res) {
   var id = req.body.idproduto;
   var descri = req.body.descricao;
   var precocu = req.body.precocusto;
-  var precore = req.body.precorevend;
+  var precore = req.body.precorevenda;
   var precocli = req.body.precocliente;
    pool.connect(function(err, client,done){
     client.query('UPDATE produto SET (descricao,precocusto,precorevenda,precocliente) = ($1,$2,$3,$4) WHERE idproduto = $5;',[descri,precocu,precore,precocli,id],function(err, result){
