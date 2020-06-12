@@ -52,7 +52,7 @@ ssl: true
              if(err){
                  console.log(err);
              }                
-           res.render('/pedidos/adcProd',{pedido: resultado});
+           res.render('pedidos/adcProduto',{pedido: resultado});
         });
        }; 
      });
