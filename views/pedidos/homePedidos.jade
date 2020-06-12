@@ -15,7 +15,6 @@ block content
        th.text-center Cod
        th Cliente
        th Preço
-       th Desconto
        th Status do Pedido
        th.text-right Ações
     tbody#Tabela
@@ -24,7 +23,6 @@ block content
        td.text-center #{pedido.idpedido}
        td #{pedido.nome}
        td #{pedido.preco}
-       td #{pedido.desconto}
        td #{pedido.status}
        td.td-actions.text-right
         a(href='/pedidos/atualizarStatus/#{pedido.idpedido}')

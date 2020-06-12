@@ -8,7 +8,7 @@ ssl: true
   
   router.get('/', function(req, res) {
     pool.connect(function(err, client,done){
-    client.query('SELECT ped.idpedido as idpedido,ped.preco as preco, ped.desconto as desconto, cli.nome as nome,status.descricao as status FROM pedido as ped INNER JOIN cliente as cli on (ped.idcliente = cli.idcliente) INNER JOIN status on (ped.idstatus = status.idstatus) order by idpedido ASC;',function(err, result){
+    client.query('SELECT ped.idpedido as idpedido,ped.preco as preco, cli.nome as nome,status.descricao as status FROM pedido as ped INNER JOIN cliente as cli on (ped.idcliente = cli.idcliente) INNER JOIN status on (ped.idstatus = status.idstatus) order by idpedido ASC;',function(err, result){
         done();
         if(err){
             console.log(err.stack);
