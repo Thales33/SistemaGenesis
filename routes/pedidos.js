@@ -52,7 +52,7 @@ ssl: true
              if(err){
                  console.log(err);
              }                
-           res.redirect('/pedido/adcProd');
+           res.redirect('/pedidos/adcProd');
         });
        }; 
      });
@@ -76,7 +76,7 @@ ssl: true
           res.render('pedidos/adcProduto',{
               title: 'Adicionar itens ao Pedido'
               ,estoques: result
-              ,pedido: resultado
+              ,pedido: resultado.rows[0]
           });    
          });
          });    
