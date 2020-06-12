@@ -42,16 +42,24 @@ ssl: true
       var idstatus = 1;
       pool.connect(function(err, client, done){
       client.query('INSERT INTO pedido (idcliente,idstatus) VALUES ($1,$2)', [idcliente,idstatus], function(err, result) {
-      done();
-      if (err){
-        console.log(err);
-        res.send('Erro ao adicionar Pedido ao Banco Dados');
-      }else{
-       res.redirect('/pedidos/adcProd');
-       }
-      });
+        done();
+        if (err){
+           console.log(err);
+           res.send('Erro ao adicionar Pedido ao Banco Dados');
+        }else{
+          client.query('SELECT idpedido FROM pedido ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
+             done();
+             if(err){
+                 console.log(err);
+             }                
+           res.render('/pedidos/adcProduto',{pedido: resultado});
+        });
+       }; 
      });
-  });   
+    });
+    });   
+     
+   
 
   router.get('/adcProd',function(req,res){
     pool.connect(function(err,client, done){
@@ -60,7 +68,7 @@ ssl: true
              if(err){
                  console.log(err);
              }
-       client.query('SELECT cliente.nome,* FROM pedido inner join cliente on (pedido.idcliente = cliente.idcliente) ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
+       client.query('SELECT * FROM pedido inner join cliente on (pedido.idcliente = cliente.idcliente) ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
              done();
              if(err){
                  console.log(err);

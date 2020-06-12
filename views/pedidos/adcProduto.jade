@@ -3,10 +3,10 @@ extends ../layout
 block content
     h2= title
 
-    form(name="add",method="post",action="/pedidos/addProd")
+    form(name="addProdPedido",method="post",action="/pedidos/addProd")
     .container
         |Pedido
-        input#pedido.form-control.input-md(name='pedido', type='text', placeholder='#{pedido.idpedido} + #{pedido.nome}',value='#{pedido.idpedido}',disabled='')
+        input#pedido.form-control.input-md(name='pedido', type='text', placeholder='#{pedido.idpedido}',value='#{pedido.idpedido}', readonly='readonly')
         // Text input
         | Produto + Quantidade disponivel
         select#produto.form-control(name='produto')
