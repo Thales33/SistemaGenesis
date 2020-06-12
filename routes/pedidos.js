@@ -52,7 +52,7 @@ ssl: true
              if(err){
                  console.log(err);
              }                
-           res.render('pedidos/adcProduto',{pedido: resultado});
+           res.redirect('/adcProd');
         });
        }; 
      });
@@ -68,7 +68,7 @@ ssl: true
              if(err){
                  console.log(err);
              }
-       client.query('SELECT * FROM pedido inner join cliente on (pedido.idcliente = cliente.idcliente) ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
+       client.query('SELECT idpedido FROM pedido ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
              done();
              if(err){
                  console.log(err);
