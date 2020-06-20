@@ -132,17 +132,16 @@ ssl: true
    });
   });
  router.post('/attStatus',function(req,res){
+      var idstatus = req.body.status;
       var idpedido = req.body.pedido;
-      var idproduto = req.body.produto;
-      var quantidade = req.body.quantidade
       pool.connect(function(err, client, done){
-      client.query('INSERT INTO produtopedido (idpedido,idproduto,quant) VALUES ($1,$2,$3)', [idpedido,idproduto,quantidade], function(err, result) {
+      client.query('UPDADE pedido SET (idstatus) VALUES ($1) WHERE idpedido = $2', [idstatus,idpedido], function(err, result) {
       done();
       if (err){
         console.log(err);
-        res.send('Erro ao adicionar Pedido ao Banco Dados');
+        res.send('Erro ao editar o status do Pedido');
       }else{
-       res.redirect('/pedidos/adcProd');
+       res.render('pedidos/homePedidos');
        }
       });
      });
