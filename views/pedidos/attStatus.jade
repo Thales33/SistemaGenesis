@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    h3= title
+    
+    form(name="attStatus",method="post",action="/pedidos/attStatus")
+     .container
+        // Text input
+        input#ProdID.form-control.input-md(name='idproduto', type='hidden', readonly='readonly', value='#{produto.idproduto}')
+        br
+        // Text input
+        | Status
+        select#produto.form-control(name='produto')
+           each statu, i in status.rows
+            option(value='#{statu.istatus}') #{statu.descricao} 
+        br
+        // Button
+        button.btn.btn-primary(type='submit') Salvar Status

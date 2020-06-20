@@ -120,32 +120,37 @@ ssl: true
 
   var id = req.params.id;
   pool.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM marca', function(err, retorno) { 
+    client.query('SELECT * FROM status', function(err, retorno) { 
      if (err){
       console.log(err);
      }
-    client.query('SELECT * FROM tipo', function(err, resultados) { 
-     if (err){
-      console.log(err);
-     }
-    client.query('SELECT * FROM PRODUTOS WHERE idprodutos = $1',[id], function(err, result) {
-      done();
-      if (err){
-      console.log(err);
-      console.log("ERRO" +err);
-
-      }
-
-      res.render('produtos/detalhes/:id',{
-      produtos : result,
-      title: 'Editar Produto',
-      marcas: retorno,
-      tipos : resultados });
+      res.render('pedidos/attStatus',{
+      title: 'Detalhes do Pedido',
+      status: retorno,
+      idpedido : id });
     });
    });
   });
- });
-});
+ router.post('/attStatus',function(req,res){
+      var idpedido = req.body.pedido;
+      var idproduto = req.body.produto;
+      var quantidade = req.body.quantidade
+      pool.connect(function(err, client, done){
+      client.query('INSERT INTO produtopedido (idpedido,idproduto,quant) VALUES ($1,$2,$3)', [idpedido,idproduto,quantidade], function(err, result) {
+      done();
+      if (err){
+        console.log(err);
+        res.send('Erro ao adicionar Pedido ao Banco Dados');
+      }else{
+       res.redirect('/pedidos/adcProd');
+       }
+      });
+     });
+  }); 
+
+
+ 
+
 
 router.post('/editarProdutos', function(req,res){
   var idproduto = req.body.idproduto;
