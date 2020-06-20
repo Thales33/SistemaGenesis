@@ -69,20 +69,16 @@ ssl: true
              if(err){
                  console.log(err);
              }
-       client.query('SELECT idpedido FROM pedido ORDER BY idpedido DESC LIMIT 1;', function(err,resultado){
-             done();
-             if(err){
-                 console.log(err);
-             }                    
+                        
           res.render('pedidos/adcProduto',{
               title: 'Adicionar itens ao Pedido'
               ,estoques: result
-              ,pedido: idpedido
+              ,idpedido
           });    
          });
          });    
         });
-      });
+      
 
    router.post('/addProd',function(req,res){
       var idpedido = req.body.pedido;
@@ -131,6 +127,7 @@ ssl: true
     });
    });
   });
+
  router.post('/attStatus',function(req,res){
       var idstatus = req.body.status;
       var idpedido = req.body.pedido;
@@ -145,45 +142,6 @@ ssl: true
        }
       });
      });
-  }); 
-
-
- 
-
-
-router.post('/editarProdutos', function(req,res){
-  var idproduto = req.body.idproduto;
-  var descricao = req.body.descricao;
-  var precocusto = req.body.precoCusto;
-  var precovenda = req.body.precoVenda;
-  var tipo = req.body.tipo;
-  var marca = req.body.marca;
-
-pool.connect(process.env.DATABASE_URL, function(err, client, done){
-   client.query('UPDATE PRODUTOS SET descricao = ($1), precocusto = ($2),precovenda = ($3),idtipo = ($4), idmarca = ($5) WHERE idprodutos = $6', [descricao, precocusto, precovenda, tipo, marca, idproduto], function(err, result) {
-    done();
-    if (err){
-      console.log(err);
-    }
-    res.redirect('/produtos/listprodutos');
-  });
- });
-});
-
-router.get('/delete/:id',function(req,res){
-    
-    var id = req.params.id;    
-  pool.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query("DELETE FROM PRODUTOS WHERE id = $1",[id],function(err){
-      done();
-        if(err){
-            console.log(err);
-        }           
-        res.redirect('/produtos/listprodutos');
-        console.log('Deletado com sucesso!');
-        
-      }); 
-    });
   }); 
 
   module.exports = router;

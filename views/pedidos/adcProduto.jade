@@ -6,7 +6,7 @@ block content
     form(name="addProdPedido",method="post",action="/pedidos/addProd/#{pedido}")
      .container
         |Pedido
-        input#pedido.form-control.input-md(name='pedido', type='text', placeholder='#{pedido}',value='#{pedido}', readonly='readonly')
+        input#pedido.form-control.input-md(name='pedido', type='text', placeholder='#{idpedido}',value='#{idpedido}', readonly='readonly')
         // Text input
         | Produto + Quantidade disponivel
         select#produto.form-control(name='produto')
