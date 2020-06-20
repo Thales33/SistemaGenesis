@@ -61,7 +61,8 @@ ssl: true
      
    
 
-  router.get('/adcProd',function(req,res){
+  router.get('/adcProd/:id',function(req,res){
+    var idpedido = req.body.pedido;
     pool.connect(function(err,client, done){
        client.query('SELECT prod.idproduto,prod.descricao, SUM(estoque.quantidade) as quantidade FROM produto as prod, estoque WHERE prod.idproduto = estoque.idproduto GROUP BY prod.idproduto ORDER BY prod.idproduto ASC;', function(err,result){
              done();
@@ -76,7 +77,7 @@ ssl: true
           res.render('pedidos/adcProduto',{
               title: 'Adicionar itens ao Pedido'
               ,estoques: result
-              ,pedido: resultado.rows[0]
+              ,pedido: idpedido
           });    
          });
          });    
