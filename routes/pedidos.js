@@ -115,7 +115,7 @@ ssl: true
 
   var id = req.params.id;
   pool.connect(process.env.DATABASE_URL, function(err, client, done){
-    client.query('SELECT * FROM status', function(err, retorno) { 
+    client.query('SELECT * FROM status;', function(err, retorno) { 
      if (err){
       console.log(err);
      }
