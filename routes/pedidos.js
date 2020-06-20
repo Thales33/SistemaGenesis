@@ -68,9 +68,8 @@ ssl: true
              done();
              if(err){
                  console.log(err);
-             }
-                        
-          res.render('pedidos/adcProduto',{
+             }                        
+              res.render('pedidos/adcProduto',{
               title: 'Adicionar itens ao Pedido'
               ,estoques: result
               ,idpedido
