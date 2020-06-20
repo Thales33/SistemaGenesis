@@ -52,7 +52,7 @@ ssl: true
              if(err){
                  console.log(err);
              }                
-           res.redirect('/pedidos/adcProd');
+           res.redirect('/pedidos');
         });
        }; 
      });
